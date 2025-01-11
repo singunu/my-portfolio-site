@@ -45,12 +45,13 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
   }, [activeItem]);
 
   return (
-    <div className="fixed bottom-2 sm:bottom-10 md:bottom-8 w-full flex justify-center pb-4 sm:pb-6 md:pb-8 pb-[env(safe-area-inset-bottom,1rem)]">
+    <div className="fixed bottom-2 sm:bottom-1 md:bottom-1 w-full flex justify-center pb-4 sm:pb-6 md:pb-8 lg:pb-3 xl:pb-8 pb-[env(safe-area-inset-bottom,1rem)]">
       <motion.nav 
-        className="glassmorphism rounded-full px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 relative max-w-[95%] sm:max-w-[90%] md:max-w-[85%]"
-        initial={{ y: 100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+        className="glassmorphism rounded-full 
+        px-3 sm:px-4 md:px-6 lg:px-5 xl:px-6
+        py-2 sm:py-2.5 md:py-3 lg:py-2.5 xl:py-3 
+        relative 
+        max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:max-w-[80%] xl:max-w-[75%]"
       >
         <motion.div
           className="absolute bg-blue-500/20 dark:bg-blue-400/20 rounded-full"
@@ -77,13 +78,13 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
               key={item.id}
               data-id={item.id}
               onClick={() => item.onClick ? item.onClick() : handleClick(item.id)}
-              className={`relative p-1.5 sm:p-2 rounded-full z-10 ${
+              className={`relative p-1.5 sm:p-2 md:p-2 lg:p-1.5 xl:p-2 rounded-full z-10 ${
                 activeItem === item.id ? 'text-blue-500 dark:text-blue-400' : 'text-gray-500 dark:text-gray-400'
               }`}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
-              <item.icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+              <item.icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-5 lg:h-5 xl:w-6 xl:h-6" />
             </motion.button>
           ))}
         </div>
