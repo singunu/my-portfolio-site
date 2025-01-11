@@ -59,7 +59,7 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.8 }}
         >
           <motion.a 
-            href="https://www.notion.so/1509a4450304809fab3afaac417ab2ff?pvs=4"
+            href="https://verbose-hoodie-b9b.notion.site/1509a4450304809fab3afaac417ab2ff?pvs=4"
             target="_blank"
             className="px-3 sm:px-4 lg:px-6 py-2 sm:py-3 text-sm sm:text-base
                       glassmorphism text-gray-800 dark:text-white rounded-full 

@@ -15,7 +15,7 @@ export default function ContactSection() {
     email: "singunu17@gmail.com",
     phone: "+82 10-6384-8794",
     github: "https://github.com/singunu",
-    notion: "https://www.notion.so/1509a4450304809fab3afaac417ab2ff?pvs=4"
+    notion: "https://verbose-hoodie-b9b.notion.site/1509a4450304809fab3afaac417ab2ff?pvs=4"
   };
 
   const handleSendMessage = (e: React.FormEvent) => {

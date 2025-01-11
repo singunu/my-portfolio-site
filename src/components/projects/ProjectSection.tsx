@@ -25,7 +25,7 @@ const projects = [
       { name: "Vue.js", color: "bg-emerald-600" },
       { name: "Django", color: "bg-green-700" }
     ],
-    link: "https://www.notion.so/RichBeats-1509a4450304813c9283db28124e8ad1?pvs=4"
+    link: "https://verbose-hoodie-b9b.notion.site/RichBeats-1509a4450304813c9283db28124e8ad1?pvs=4"
   },
   {
     title: "Sixtale",
@@ -46,7 +46,7 @@ const projects = [
       { name: "Vue.js", color: "bg-emerald-600" },
       { name: "JavaScript", color: "bg-yellow-600" }
     ],
-    link: "https://www.notion.so/Sixtale-1509a445030481089a3bd2c5ddad0494?pvs=4"
+    link: "https://verbose-hoodie-b9b.notion.site/Sixtale-1509a445030481089a3bd2c5ddad0494?pvs=4"
   },
   {
     title: "미정(味精)",
@@ -73,7 +73,7 @@ const projects = [
       { name: "React", color: "bg-purple-600" },
       { name: "JavaScript", color: "bg-yellow-600" }
     ],
-    link: "https://www.notion.so/1509a445030481deb796dcb7cc23c782?pvs=4m"
+    link: "https://verbose-hoodie-b9b.notion.site/1509a445030481deb796dcb7cc23c782?pvs=4"
   },
   {
     title: "Arcana",
@@ -98,7 +98,7 @@ const projects = [
       { name: "React", color: "bg-purple-600" },
       { name: "JavaScript", color: "bg-yellow-600" }
     ],
-    link: "https://www.notion.so/ARCANA-1509a445030481648513f45f0ab30a65?pvs=4"
+    link: "https://verbose-hoodie-b9b.notion.site/ARCANA-1509a445030481648513f45f0ab30a65?pvs=4"
   }
 ];
 
