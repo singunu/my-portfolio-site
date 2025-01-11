@@ -14,7 +14,6 @@ module.exports = {
     },
   },
   plugins: [],
-  // iOS 깜빡임 방지를 위한 추가 설정
   future: {
     hoverOnlyWhenSupported: true,
   },
