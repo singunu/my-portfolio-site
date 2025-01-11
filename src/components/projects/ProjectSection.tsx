@@ -143,11 +143,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
-      className="perspective-1000 min-h-[460px] md:min-h-[500px]"
+      className="perspective-1000 min-h-[400px] sm:min-h-[460px] md:min-h-[500px]"
     >
       {/* 모바일 디자인 */}
-      <div className="block sm:hidden h-full">
-        <div className="glassmorphism h-full rounded-xl overflow-hidden shadow-lg flex flex-col">
+      <div className="block lg:hidden">
+      <div className="glassmorphism rounded-xl overflow-hidden shadow-lg flex flex-col">
           {/* 이미지 */}
           <div className="relative h-36 sm:h-44 md:h-48">
             <Image
@@ -163,17 +163,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
           {/* 콘텐츠 */}
           <div className="p-3 xs:p-3 sm:p-4 flex flex-col">
       {/* 제목 및 기본 정보 */}
-      <div className="space-y-2 xs:space-y-2 sm:space-y-3 flex-1">
+      <div className="space-y-2 xs:space-y-2 sm:space-y-3">
         <div>
-          <h3 className="text-sm xs:text-base sm:text-lg font-bold text-gray-900 dark:text-white">
-            {project.title}
-          </h3>
-          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 line-clamp-2">
-            {project.titleKo}
-          </p>
+        <h3 className="text-base xs:text-lg sm:text-lg font-bold text-gray-900 dark:text-white">
+          {project.title}
+        </h3>
+        <p className="text-sm xs:text-base text-gray-600 dark:text-gray-300 line-clamp-2">
+          {project.titleKo}
+        </p>
         </div>
             
-        <div className="flex flex-wrap items-center gap-1.5 xs:gap-2 text-xs text-gray-600 dark:text-gray-300">
+        <div className="flex flex-wrap items-center gap-1.5 xs:gap-2 text-sm text-gray-600 dark:text-gray-300">
           <div className="flex items-center gap-1">
             <FaUsers className="w-2.5 xs:w-3 h-2.5 xs:h-3" />
             <span>{project.teamSize}</span>
@@ -185,11 +185,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         </div>
 
         <div className="mb-1 xs:mb-2">
-          <h4 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white mb-1.5 flex items-center gap-1.5 sm:gap-2">
+        <h4 className="text-base font-semibold text-gray-900 dark:text-white mb-1.5 flex items-center gap-1.5 sm:gap-2">
             <FaTools className="w-3 h-3 sm:w-4 sm:h-4" />
             담당 역할
           </h4>
-          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+          <p className="text-sm text-gray-600 dark:text-gray-300">
             {project.role.join(', ')}
           </p>
         </div>
@@ -198,7 +198,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
           href={project.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-5 w-full py-1 xs:py-1.5 sm:py-2 
+          className="mt-3 mb-0 w-full py-1 xs:py-1.5 sm:py-2 
             flex items-center justify-center gap-1 xs:gap-1.5 sm:gap-2
             text-xs xs:text-sm text-blue-600 dark:text-blue-300 
             border border-blue-500/30 dark:border-blue-400/30
@@ -218,7 +218,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
 </div>
 
       {/* 태블릿/데스크톱 디자인 */}
-      <div className="hidden sm:block perspective-1000 h-[460px] md:h-[500px]">
+      <div className="hidden lg:block perspective-1000 h-[460px] md:h-[500px]">
         <motion.div
           className="relative w-full h-full preserve-3d group"
           animate={{ rotateY: isFlipped ? 180 : 0 }}
@@ -257,37 +257,37 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
               </div>
 
               {/* 콘텐츠 */}
-              <div className="p-4 space-y-3">
-                <div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2">
-                    {project.titleKo}
-                  </p>
-                </div>
+              <div className="p-4 flex flex-col h-[calc(100%-12rem)] min-h-[16rem] space-y-4 overflow-y-auto">
+  <div>
+    <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+      {project.title}
+    </h3>
+    <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2">
+      {project.titleKo}
+    </p>
+  </div>
 
-                <div className="flex flex-wrap items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
-                  <div className="flex items-center gap-1">
-                    <FaUsers className="w-4 h-4" />
-                    <span>{project.teamSize}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <FaClock className="w-4 h-4" />
-                    <span>{project.duration}</span>
-                  </div>
-                </div>
+  <div className="flex flex-wrap items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
+    <div className="flex items-center gap-1">
+      <FaUsers className="w-4 h-4" />
+      <span>{project.teamSize}</span>
+    </div>
+    <div className="flex items-center gap-1">
+      <FaClock className="w-4 h-4" />
+      <span>{project.duration}</span>
+    </div>
+  </div>
 
-                <div>
-                <h4 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white mb-1 flex items-center gap-1.5 sm:gap-2">
-                    <FaTools className="w-3 h-3 sm:w-4 sm:h-4" />
-                    담당 역할
-                  </h4>
-                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
-                    {project.role.join(', ')}
-                  </p>
-                </div>
-              </div>
+  <div className="mt-auto pt-2">  {/* pt-2 추가 */}
+    <h4 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white mb-1 flex items-center gap-1.5 sm:gap-2">
+      <FaTools className="w-3 h-3 sm:w-4 sm:h-4" />
+      담당 역할
+    </h4>
+    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+      {project.role.join(', ')}
+    </p>
+  </div>
+</div>
             </div>
           </div>
 
