@@ -40,7 +40,7 @@ body {
   );
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
   backface-visibility: hidden;
