@@ -46,8 +46,8 @@ body {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -webkit-overflow-scrolling: touch; /* iOS 스크롤 성능 개선 */
-  -webkit-perspective: 1000;
-  -webkit-transform-style: preserve-3d;
+  /* -webkit-perspective: 1000;
+  -webkit-transform-style: preserve-3d; */
 }
 
 .theme-transition {
