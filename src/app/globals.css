@@ -6,12 +6,15 @@
 
 /* 기본 설정 */
 :root {
+  --vh: 100%;
   --animate-duration: 0.3s;
   --gradient-1: #E0F2FF;
   --gradient-2: #E5E9FF;
   --gradient-3: #F0F5FF;
   --gradient-4: #E8F4FF;
 }
+
+
 
 /* 다크모드 변수 */
 .dark {
@@ -45,9 +48,9 @@ body {
   -webkit-transform: translateZ(0);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  -webkit-overflow-scrolling: touch; /* iOS 스크롤 성능 개선 */
-  /* -webkit-perspective: 1000;
-  -webkit-transform-style: preserve-3d; */
+  -webkit-overflow-scrolling: auto;
+  transform: none;
+  -webkit-transform: none;
 }
 
 .theme-transition {
