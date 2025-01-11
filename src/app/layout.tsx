@@ -1,10 +1,13 @@
-'use client'
-
-import { ThemeProvider } from '@/context/ThemeContext'
-import './globals.css'
+import Providers from '@/components/providers/ThemeProvider'
 import { Inter } from 'next/font/google'
+import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
+
+export const metadata = {
+  title: "singunu's portfolio",
+  description: '신건우의 포트폴리오 웹사이트입니다',
+}
 
 export default function RootLayout({
   children,
@@ -12,11 +15,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={inter.className}>
+    <html lang="ko" suppressHydrationWarning className={inter.className}>
       <body className="min-h-screen min-w-screen">
-        <ThemeProvider>
+        <Providers>
           {children}
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   )
