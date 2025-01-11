@@ -45,7 +45,7 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
   }, [activeItem]);
 
   return (
-    <div className="fixed bottom-0 sm:bottom-10 md:bottom-8 w-full flex justify-center pb-4 sm:pb-6 md:pb-8 pb-[env(safe-area-inset-bottom)]">
+    <div className="fixed bottom-0 sm:bottom-10 md:bottom-8 w-full flex justify-center pb-4 sm:pb-6 md:pb-8 pb-[env(safe-area-inset-bottom,1rem)]">
       <motion.nav 
         className="glassmorphism rounded-full px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 relative max-w-[95%] sm:max-w-[90%] md:max-w-[85%]"
         initial={{ y: 100, opacity: 0 }}
