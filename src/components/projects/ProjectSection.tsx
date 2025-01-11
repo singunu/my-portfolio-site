@@ -143,7 +143,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
-      className="perspective-1000 h-[460px] md:h-[500px]"
+      className="perspective-1000 min-h-[460px] md:min-h-[500px]"
     >
       {/* 모바일 디자인 */}
       <div className="block sm:hidden h-full">
@@ -161,9 +161,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
           </div>
 
           {/* 콘텐츠 */}
-          <div className="p-3 xs:p-3 sm:p-4 flex-1 flex flex-col">
+          <div className="p-3 xs:p-3 sm:p-4 flex flex-col">
       {/* 제목 및 기본 정보 */}
-      <div className="space-y-2 xs:space-y-2 sm:space-y-3"> {/* 간격 반응형 추가 */}
+      <div className="space-y-2 xs:space-y-2 sm:space-y-3 flex-1">
         <div>
           <h3 className="text-sm xs:text-base sm:text-lg font-bold text-gray-900 dark:text-white">
             {project.title}
@@ -184,29 +184,29 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
           </div>
         </div>
 
-        <div className="mb-2 xs:mb-3 sm:mb-4">
-  <h4 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white mb-1.5 flex items-center gap-1.5 sm:gap-2">
-    <FaTools className="w-3 h-3 sm:w-4 sm:h-4" />
-    담당 역할
-  </h4>
-  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
-    {project.role.join(', ')}
-  </p>
-</div>
+        <div className="mb-1 xs:mb-2">
+          <h4 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white mb-1.5 flex items-center gap-1.5 sm:gap-2">
+            <FaTools className="w-3 h-3 sm:w-4 sm:h-4" />
+            담당 역할
+          </h4>
+          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+            {project.role.join(', ')}
+          </p>
+        </div>
         </div>
         <motion.a
           href={project.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-auto pt-1.5 xs:pt-2 sm:pt-3 w-full py-1 xs:py-1.5 sm:py-2 
-                  flex items-center justify-center gap-1 xs:gap-1.5 sm:gap-2
-                  text-xs xs:text-sm text-blue-600 dark:text-blue-300 
-                  border border-blue-500/30 dark:border-blue-400/30
-                  rounded-lg
-                  bg-blue-500/5 dark:bg-blue-400/5
-                  hover:bg-blue-500/10 dark:hover:bg-blue-400/10
-                  transition-all duration-300 
-                  group"
+          className="mt-5 w-full py-1 xs:py-1.5 sm:py-2 
+            flex items-center justify-center gap-1 xs:gap-1.5 sm:gap-2
+            text-xs xs:text-sm text-blue-600 dark:text-blue-300 
+            border border-blue-500/30 dark:border-blue-400/30
+            rounded-lg
+            bg-blue-500/5 dark:bg-blue-400/5
+            hover:bg-blue-500/10 dark:hover:bg-blue-400/10
+            transition-all duration-300 
+            group"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
@@ -279,11 +279,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
                 </div>
 
                 <div>
-                  <h4 className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white mb-1 sm:mb-1.5 flex items-center gap-1 sm:gap-2"> {/* 간격 반응형 추가 */}
+                <h4 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white mb-1 flex items-center gap-1.5 sm:gap-2">
                     <FaTools className="w-3 h-3 sm:w-4 sm:h-4" />
                     담당 역할
                   </h4>
-                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300"> {/* 텍스트 크기 반응형 */}
+                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
                     {project.role.join(', ')}
                   </p>
                 </div>
