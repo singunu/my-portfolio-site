@@ -4,18 +4,16 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', sans-serif;
-}
-
-/* Theme transitions */
+/* 기본 설정 */
 :root {
+  --animate-duration: 0.3s;
   --gradient-1: #E0F2FF;
   --gradient-2: #E5E9FF;
   --gradient-3: #F0F5FF;
   --gradient-4: #E8F4FF;
 }
 
+/* 다크모드 변수 */
 .dark {
   --gradient-1: #1A1B4B;
   --gradient-2: #2C2C64;
@@ -23,17 +21,17 @@ body {
   --gradient-4: #2A3356;
 }
 
-/* Smooth transitions for theme changes */
-*, *::before, *::after {
-  transition: background-color 0.3s ease,
-              border-color 0.3s ease,
-              color 0.3s ease,
-              box-shadow 0.3s ease,
-              opacity 0.3s ease;
+/* iOS 최적화 */
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* 전체 배경 그라데이션 */
+/* 기본 스타일 */
 body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(135deg, 
     var(--gradient-1) 0%,
     var(--gradient-2) 30%,
@@ -43,10 +41,31 @@ body {
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
   min-height: 100vh;
-  transition: background 0.5s ease;
+  transition: background 0.3s ease;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
-/* 글라스모피즘 효과 개선 */
+.theme-transition {
+  transition: 
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* 트랜지션 설정 */
+/* *, *::before, *::after {
+  transition: 
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease,
+    opacity 0.3s ease;
+} */
+
+/* 글라스모피즘 */
 .glassmorphism {
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(12px);
@@ -71,6 +90,18 @@ body {
     inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
+/* iOS 성능 최적화 */
+@supports (-webkit-touch-callout: none) {
+  body {
+    will-change: background-position;
+  }
+  
+  .glassmorphism {
+    will-change: backdrop-filter;
+    transform: translateZ(0);
+  }
+}
+
 /* 애니메이션 */
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
@@ -78,16 +109,7 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* 스크롤바 숨김 */
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
+/* 유틸리티 클래스 */
 @layer utilities {
   .perspective-1000 {
     perspective: 1000px;
@@ -106,7 +128,17 @@ body {
   }
 }
 
-/* 커스텀 스크롤바 스타일 */
+/* 스크롤바 관련 */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* 커스텀 스크롤바 */
 .scrollbar-thin {
   scrollbar-width: thin;
 }
