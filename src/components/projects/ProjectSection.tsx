@@ -147,9 +147,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
     >
       {/* 모바일 디자인 */}
       <div className="block sm:hidden h-full">
-        <div className="glassmorphism h-full rounded-xl overflow-hidden shadow-lg">
+        <div className="glassmorphism h-full rounded-xl overflow-hidden shadow-lg flex flex-col">
           {/* 이미지 */}
-          <div className="relative h-44">
+          <div className="relative h-36 sm:h-44 md:h-48">
             <Image
               src={project.image}
               alt={project.title}
@@ -161,48 +161,61 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
           </div>
 
           {/* 콘텐츠 */}
-          <div className="p-3 space-y-2">
-            <div>
-              <h3 className="text-base font-bold text-gray-900 dark:text-white">
-                {project.title}
-              </h3>
-              <p className="text-xs text-gray-600 dark:text-gray-300 line-clamp-2">
-                {project.titleKo}
-              </p>
-            </div>
+          <div className="p-3 xs:p-3 sm:p-4 flex-1 flex flex-col">
+      {/* 제목 및 기본 정보 */}
+      <div className="space-y-2 xs:space-y-2 sm:space-y-3"> {/* 간격 반응형 추가 */}
+        <div>
+          <h3 className="text-sm xs:text-base sm:text-lg font-bold text-gray-900 dark:text-white">
+            {project.title}
+          </h3>
+          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 line-clamp-2">
+            {project.titleKo}
+          </p>
+        </div>
             
-            <div className="flex flex-wrap items-center gap-2 text-xs text-gray-600 dark:text-gray-300">
-              <div className="flex items-center gap-1">
-                <FaUsers className="w-3 h-3" />
-                <span>{project.teamSize}</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <FaClock className="w-3 h-3" />
-                <span>{project.duration}</span>
-              </div>
-            </div>
-
-            <motion.a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 w-full py-2 flex items-center justify-center gap-1.5
-                       text-sm text-blue-600 dark:text-blue-300 
-                       border border-blue-500/30 dark:border-blue-400/30
-                       rounded-lg
-                       bg-blue-500/5 dark:bg-blue-400/5
-                       hover:bg-blue-500/10 dark:hover:bg-blue-400/10
-                       transition-all duration-300 
-                       group"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              자세히 보기
-              <FaExternalLinkAlt className="w-3 h-3 transition-transform group-hover:translate-x-1" />
-            </motion.a>
+        <div className="flex flex-wrap items-center gap-1.5 xs:gap-2 text-xs text-gray-600 dark:text-gray-300">
+          <div className="flex items-center gap-1">
+            <FaUsers className="w-2.5 xs:w-3 h-2.5 xs:h-3" />
+            <span>{project.teamSize}</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <FaClock className="w-2.5 xs:w-3 h-2.5 xs:h-3" />
+            <span>{project.duration}</span>
           </div>
         </div>
+
+        <div className="mb-2 xs:mb-3 sm:mb-4">
+  <h4 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white mb-1.5 flex items-center gap-1.5 sm:gap-2">
+    <FaTools className="w-3 h-3 sm:w-4 sm:h-4" />
+    담당 역할
+  </h4>
+  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+    {project.role.join(', ')}
+  </p>
+</div>
+        </div>
+        <motion.a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-auto pt-1.5 xs:pt-2 sm:pt-3 w-full py-1 xs:py-1.5 sm:py-2 
+                  flex items-center justify-center gap-1 xs:gap-1.5 sm:gap-2
+                  text-xs xs:text-sm text-blue-600 dark:text-blue-300 
+                  border border-blue-500/30 dark:border-blue-400/30
+                  rounded-lg
+                  bg-blue-500/5 dark:bg-blue-400/5
+                  hover:bg-blue-500/10 dark:hover:bg-blue-400/10
+                  transition-all duration-300 
+                  group"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          자세히 보기
+          <FaExternalLinkAlt className="w-2.5 xs:w-3 h-2.5 xs:h-3 transition-transform group-hover:translate-x-1" />
+        </motion.a>
       </div>
+  </div>
+</div>
 
       {/* 태블릿/데스크톱 디자인 */}
       <div className="hidden sm:block perspective-1000 h-[460px] md:h-[500px]">
@@ -232,15 +245,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
               </div>
 
               {/* 이미지 */}
-              <div className="relative h-48">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
-                  className="object-cover"
-                  priority
-                />
+              <div className="relative h-36 sm:h-44 md:h-48">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
+                className="object-cover"
+                priority
+              />
               </div>
 
               {/* 콘텐츠 */}
@@ -266,11 +279,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
                 </div>
 
                 <div>
-                  <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-1.5 flex items-center gap-2">
-                    <FaTools className="w-4 h-4" />
+                  <h4 className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white mb-1 sm:mb-1.5 flex items-center gap-1 sm:gap-2"> {/* 간격 반응형 추가 */}
+                    <FaTools className="w-3 h-3 sm:w-4 sm:h-4" />
                     담당 역할
                   </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300"> {/* 텍스트 크기 반응형 */}
                     {project.role.join(', ')}
                   </p>
                 </div>

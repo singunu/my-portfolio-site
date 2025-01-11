@@ -7,7 +7,7 @@ import { BiSend } from 'react-icons/bi';
 
 export default function ContactSection() {
   const [messages, setMessages] = useState([
-    { type: 'bot', content: '안녕하세요! 궁금하신 점을 물어보세요.' }
+    { type: 'bot', content: '안녕하세요! 저에 대해 궁금하신 점을 물어보세요.' }
   ]);
   const [input, setInput] = useState('');
 
@@ -125,26 +125,27 @@ export default function ContactSection() {
 
             {/* Chat Interface */}
             <motion.div
-              className="glassmorphism rounded-xl sm:rounded-2xl overflow-hidden flex flex-col"
+              className="glassmorphism rounded-xl sm:rounded-2xl overflow-hidden flex flex-col w-full"
               initial={{ x: 50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-              <div className="p-3 sm:p-4 bg-blue-100 dark:bg-blue-900/30">
-                <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
-                  AI 쳇봇 상담
+              <div className="p-2 sm:p-3 md:p-4 bg-blue-100 dark:bg-blue-900/30">
+                <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-900 dark:text-white">
+                  AI 챗봇 상담
                 </h3>
               </div>
               
-              <div className="flex-1 p-3 sm:p-4 overflow-y-auto space-y-3 sm:space-y-4 
-                            max-h-[300px] sm:max-h-[400px] md:max-h-[500px]">
+              {/* 채팅 메시지 영역 */}
+              <div className="flex-1 p-2 sm:p-3 md:p-4 overflow-y-auto space-y-2 sm:space-y-3 md:space-y-4 
+                            max-h-[250px] sm:max-h-[350px] md:max-h-[450px]">
                 {messages.map((message, index) => (
                   <div
                     key={index}
                     className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
                   >
                     <div
-                      className={`max-w-[80%] p-2 sm:p-3 rounded-xl text-sm sm:text-base ${
+                      className={`max-w-[85%] p-1.5 sm:p-2 md:p-3 rounded-xl text-xs sm:text-sm md:text-base ${
                         message.type === 'user'
                           ? 'bg-blue-500/20 text-blue-900 dark:text-blue-100'
                           : 'bg-blue-100 dark:bg-blue-900/30 text-gray-900 dark:text-gray-100'
@@ -156,25 +157,29 @@ export default function ContactSection() {
                 ))}
               </div>
 
-              <form onSubmit={handleSendMessage} className="p-3 sm:p-4 border-t border-gray-200 dark:border-gray-700">
-                <div className="flex space-x-2">
+              {/* 입력 폼 */}
+              <form onSubmit={handleSendMessage} className="border-t border-gray-200 dark:border-gray-700">
+                <div className="flex items-center p-1.5 sm:p-2 md:p-3 gap-1 sm:gap-2">
                   <input
                     type="text"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="메시지를 입력하세요..."
-                    className="flex-1 p-2 text-sm sm:text-base rounded-lg bg-blue-100 dark:bg-blue-900/30
-                             text-gray-900 dark:text-white border-none focus:ring-2 
-                             focus:ring-blue-500 dark:focus:ring-blue-400
-                             placeholder:text-gray-500 dark:placeholder:text-gray-400"
+                    className="flex-1 min-w-0 p-1.5 sm:p-2 text-xs sm:text-sm md:text-base rounded-lg 
+                            bg-blue-100 dark:bg-blue-900/30
+                            text-gray-900 dark:text-white border-none 
+                            focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400
+                            placeholder:text-gray-500 dark:placeholder:text-gray-400"
                   />
                   <button
                     type="submit"
-                    className="p-2 rounded-lg bg-blue-500/20 dark:bg-blue-400/20 
-                             text-blue-700 dark:text-blue-300 hover:bg-blue-500/30 
-                             dark:hover:bg-blue-400/30 transition-colors"
+                    className="flex-shrink-0 p-1.5 sm:p-2 rounded-lg 
+                            bg-blue-500/20 dark:bg-blue-400/20 
+                            text-blue-700 dark:text-blue-300 
+                            hover:bg-blue-500/30 dark:hover:bg-blue-400/30 
+                            transition-colors"
                   >
-                    <BiSend className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <BiSend className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" />
                   </button>
                 </div>
               </form>
