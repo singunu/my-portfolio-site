@@ -205,13 +205,18 @@ export default function AboutAndSkills() {
           <AnimatePresence mode="wait">
             {activeSection === 'about' ? (
               <motion.div
-                key="about"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.3 }}
-                className="mt-4 sm:mt-6 grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8"
-              >
+  key="about"
+  initial={{ opacity: 0, x: -20 }}
+  animate={{ opacity: 1, x: 0 }}
+  exit={{ opacity: 0, x: 20 }}
+  transition={{ duration: 0.3 }}
+  className="mt-4 sm:mt-6 grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8"
+  style={{
+    WebkitBackfaceVisibility: "hidden",
+    WebkitTransform: "translate3d(0, 0, 0)",
+    willChange: "transform"  // style 객체 안으로 이동
+  }}
+>
                 {/* Profile Information */}
                 <div className="space-y-4 sm:space-y-6">
                   <div>
