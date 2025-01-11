@@ -1,0 +1,187 @@
+'use client';
+
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { FaGithub, FaEnvelope, FaPhone, FaLink } from 'react-icons/fa';
+import { BiSend } from 'react-icons/bi';
+
+export default function ContactSection() {
+  const [messages, setMessages] = useState([
+    { type: 'bot', content: '안녕하세요! 궁금하신 점을 물어보세요.' }
+  ]);
+  const [input, setInput] = useState('');
+
+  const contactInfo = {
+    email: "singunu17@gmail.com",
+    phone: "+82 10-6384-8794",
+    github: "https://github.com/singunu",
+    notion: "https://www.notion.so/1509a4450304809fab3afaac417ab2ff?pvs=4"
+  };
+
+  const handleSendMessage = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+
+    setMessages([
+      ...messages,
+      { type: 'user', content: input },
+      { type: 'bot', content: '죄송합니다. 현재 AI 채팅 기능은 준비중입니다.' }
+    ]);
+    setInput('');
+  };
+
+  return (
+    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-blue-50/50 to-cyan-50/50 dark:from-blue-900/20 dark:to-cyan-900/20">
+      {/* Decorative Background */}
+      <div className="absolute inset-0 -z-0 overflow-hidden pointer-events-none">
+        <motion.div 
+          className="absolute top-20 left-1/6 w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80
+                     bg-rose-400/20 rounded-full mix-blend-multiply filter blur-xl"
+          animate={{ 
+            scale: [1.1, 1, 1.1],
+            x: [0, 40, -20],
+            y: [0, 30, -10]
+          }}
+          transition={{ 
+            duration: 8.5,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div 
+          className="absolute bottom-1/4 right-1/3 w-56 h-56 sm:w-72 sm:h-72 md:w-96 md:h-96
+                     bg-orange-400/20 rounded-full mix-blend-multiply filter blur-xl"
+          animate={{ 
+            scale: [1, 1.2, 1],
+            x: [0, -30, 20],
+            y: [0, 40, -20]
+          }}
+          transition={{ 
+            duration: 6.5,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "easeInOut"
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 h-full overflow-y-auto hide-scrollbar px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-12">
+        <motion.div
+          className="max-w-6xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-8 sm:mb-12 md:mb-16 text-gray-900 dark:text-white">
+            Contact
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-10">
+            {/* Contact Info */}
+            <motion.div
+              className="glassmorphism rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6"
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              {[
+                { 
+                  icon: <FaEnvelope className="w-5 h-5 sm:w-6 sm:h-6" />, 
+                  text: contactInfo.email, 
+                  href: `mailto:${contactInfo.email}` 
+                },
+                { 
+                  icon: <FaPhone className="w-5 h-5 sm:w-6 sm:h-6" />, 
+                  text: contactInfo.phone, 
+                  href: `tel:${contactInfo.phone}` 
+                },
+                { 
+                  icon: <FaGithub className="w-5 h-5 sm:w-6 sm:h-6" />, 
+                  text: "GitHub", 
+                  href: contactInfo.github 
+                },
+                { 
+                  icon: <FaLink className="w-5 h-5 sm:w-6 sm:h-6" />, 
+                  text: "Portfolio", 
+                  href: contactInfo.notion 
+                }
+              ].map((contact, index) => (
+                <motion.a
+                  key={index}
+                  href={contact.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-3 sm:space-x-4 text-sm sm:text-base text-gray-600 dark:text-gray-300 
+                             hover:text-blue-500 dark:hover:text-blue-400 
+                             transition-colors group"
+                  whileHover={{ x: 10 }}
+                >
+                  {contact.icon}
+                  <span className="group-hover:underline truncate">{contact.text}</span>
+                </motion.a>
+              ))}
+            </motion.div>
+
+            {/* Chat Interface */}
+            <motion.div
+              className="glassmorphism rounded-xl sm:rounded-2xl overflow-hidden flex flex-col"
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
+              <div className="p-3 sm:p-4 bg-blue-100 dark:bg-blue-900/30">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
+                  AI 쳇봇 상담
+                </h3>
+              </div>
+              
+              <div className="flex-1 p-3 sm:p-4 overflow-y-auto space-y-3 sm:space-y-4 
+                            max-h-[300px] sm:max-h-[400px] md:max-h-[500px]">
+                {messages.map((message, index) => (
+                  <div
+                    key={index}
+                    className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
+                  >
+                    <div
+                      className={`max-w-[80%] p-2 sm:p-3 rounded-xl text-sm sm:text-base ${
+                        message.type === 'user'
+                          ? 'bg-blue-500/20 text-blue-900 dark:text-blue-100'
+                          : 'bg-blue-100 dark:bg-blue-900/30 text-gray-900 dark:text-gray-100'
+                      }`}
+                    >
+                      {message.content}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <form onSubmit={handleSendMessage} className="p-3 sm:p-4 border-t border-gray-200 dark:border-gray-700">
+                <div className="flex space-x-2">
+                  <input
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    placeholder="메시지를 입력하세요..."
+                    className="flex-1 p-2 text-sm sm:text-base rounded-lg bg-blue-100 dark:bg-blue-900/30
+                             text-gray-900 dark:text-white border-none focus:ring-2 
+                             focus:ring-blue-500 dark:focus:ring-blue-400
+                             placeholder:text-gray-500 dark:placeholder:text-gray-400"
+                  />
+                  <button
+                    type="submit"
+                    className="p-2 rounded-lg bg-blue-500/20 dark:bg-blue-400/20 
+                             text-blue-700 dark:text-blue-300 hover:bg-blue-500/30 
+                             dark:hover:bg-blue-400/30 transition-colors"
+                  >
+                    <BiSend className="w-4 h-4 sm:w-5 sm:h-5" />
+                  </button>
+                </div>
+              </form>
+            </motion.div>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
