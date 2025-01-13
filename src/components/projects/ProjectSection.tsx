@@ -165,31 +165,31 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
       {/* 제목 및 기본 정보 */}
       <div className="space-y-2 xs:space-y-2 sm:space-y-3">
         <div>
-        <h3 className="text-base xs:text-lg sm:text-lg font-bold text-gray-900 dark:text-white">
+        <h3 className="text-base xs:text-lg sm:text-lg font-bold text-gray-900 dark:text-white theme-transition-icon">
           {project.title}
         </h3>
-        <p className="text-sm xs:text-base text-gray-600 dark:text-gray-300 line-clamp-2">
+        <p className="text-sm xs:text-base text-gray-600 dark:text-gray-300 line-clamp-2 theme-transition-icon">
           {project.titleKo}
         </p>
         </div>
             
         <div className="flex flex-wrap items-center gap-1.5 xs:gap-2 text-sm text-gray-600 dark:text-gray-300">
           <div className="flex items-center gap-1">
-            <FaUsers className="w-2.5 xs:w-3 h-2.5 xs:h-3" />
+            <FaUsers className="w-2.5 xs:w-3 h-2.5 xs:h-3 theme-transition-icon" />
             <span>{project.teamSize}</span>
           </div>
           <div className="flex items-center gap-1">
-            <FaClock className="w-2.5 xs:w-3 h-2.5 xs:h-3" />
+            <FaClock className="w-2.5 xs:w-3 h-2.5 xs:h-3 theme-transition-icon" />
             <span>{project.duration}</span>
           </div>
         </div>
 
         <div className="mb-1 xs:mb-2">
         <h4 className="text-base font-semibold text-gray-900 dark:text-white mb-1.5 flex items-center gap-1.5 sm:gap-2">
-            <FaTools className="w-3 h-3 sm:w-4 sm:h-4" />
+            <FaTools className="w-3 h-3 sm:w-4 sm:h-4 theme-transition-icon" />
             담당 역할
           </h4>
-          <p className="text-sm text-gray-600 dark:text-gray-300">
+          <p className="text-sm text-gray-600 dark:text-gray-300 theme-transition-icon">
             {project.role.join(', ')}
           </p>
         </div>
@@ -211,7 +211,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
           whileTap={{ scale: 0.98 }}
         >
           자세히 보기
-          <FaExternalLinkAlt className="w-2.5 xs:w-3 h-2.5 xs:h-3 transition-transform group-hover:translate-x-1" />
+          <FaExternalLinkAlt className="w-2.5 xs:w-3 h-2.5 xs:h-3 transition-transform group-hover:translate-x-1 theme-transition-icon" />
         </motion.a>
       </div>
   </div>
@@ -259,31 +259,31 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
               {/* 콘텐츠 */}
               <div className="p-4 flex flex-col h-[calc(100%-12rem)] min-h-[16rem] space-y-4 overflow-y-auto">
   <div>
-    <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+    <h3 className="text-lg font-bold text-gray-900 dark:text-white theme-transition-icon">
       {project.title}
     </h3>
-    <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2">
+    <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 theme-transition-icon">
       {project.titleKo}
     </p>
   </div>
 
   <div className="flex flex-wrap items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
     <div className="flex items-center gap-1">
-      <FaUsers className="w-4 h-4" />
+      <FaUsers className="w-4 h-4 theme-transition-icon" />
       <span>{project.teamSize}</span>
     </div>
     <div className="flex items-center gap-1">
-      <FaClock className="w-4 h-4" />
+      <FaClock className="w-4 h-4 theme-transition-icon" />
       <span>{project.duration}</span>
     </div>
   </div>
 
   <div className="mt-auto pt-2">  {/* pt-2 추가 */}
     <h4 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white mb-1 flex items-center gap-1.5 sm:gap-2">
-      <FaTools className="w-3 h-3 sm:w-4 sm:h-4" />
+      <FaTools className="w-3 h-3 sm:w-4 sm:h-4 theme-transition-icon" />
       담당 역할
     </h4>
-    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 theme-transition-icon">
       {project.role.join(', ')}
     </p>
   </div>
@@ -377,6 +377,7 @@ const ProjectSection: React.FC = () => {
           <motion.h2 
             className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-8 sm:mb-12 md:mb-16 
                        text-gray-900 dark:text-white"
+            style={{ fontFamily: 'Bai Jamjuree' }}
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}

@@ -4,6 +4,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Bai Jamjuree';
+  src: url('/fonts/BaiJamjuree-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GumiIndustryTTF';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-1@1.0/GumiIndustryTTF.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* 기본 설정 */
 :root {
   --vh: 100%;
@@ -43,6 +58,7 @@ body {
   );
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
+  transition: background 0.5s ease;
   /* min-height: 100vh; */
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
@@ -53,19 +69,41 @@ body {
   -webkit-transform: none;
 }
 
-.theme-transition {
-  transition: background-color 0.3s ease;  /* 필요한 속성만 트랜지션 적용 */
-}
-
-/* 트랜지션 설정 */
-/* *, *::before, *::after {
+*, *::before, *::after {
   transition: 
     background-color 0.3s ease,
     border-color 0.3s ease,
     color 0.3s ease,
     box-shadow 0.3s ease,
     opacity 0.3s ease;
-} */
+}
+
+.theme-transition-icon {
+  transition: 
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    opacity 0.3s ease;
+  transition-delay: 0s;
+}
+
+.theme-transition-heading {
+  transition: 
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    opacity 0.3s ease;
+  transition-delay: 0.1s;
+}
+
+.theme-transition-text {
+  transition: 
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    opacity 0.3s ease;
+  transition-delay: 0.2s;
+}
 
 /* 글라스모피즘 */
 .glassmorphism {
@@ -77,11 +115,12 @@ body {
     0 4px 6px -1px rgba(0, 0, 0, 0.05),
     0 2px 4px -1px rgba(0, 0, 0, 0.03),
     inset 0 0 0 1px rgba(255, 255, 255, 0.15);
-  transition: 
+    transition:
     background-color 0.3s ease,
     border-color 0.3s ease,
     box-shadow 0.3s ease;
-    transform: translate3d(0, 0, 0);
+  /* transition-delay: 0.1s; */
+  transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
   @supports (-webkit-touch-callout: none) {
     backdrop-filter: none; /* iOS에서는 backdrop-filter 비활성화 */

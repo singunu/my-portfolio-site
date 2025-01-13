@@ -73,7 +73,8 @@ export default function ContactSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-8 sm:mb-12 md:mb-16 text-gray-900 dark:text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-8 sm:mb-12 md:mb-16 text-gray-900 dark:text-white"
+          style={{ fontFamily: 'Bai Jamjuree' }}>
             Contact
           </h2>
 
@@ -130,7 +131,7 @@ export default function ContactSection() {
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-              <div className="p-2 sm:p-3 md:p-4 bg-blue-100 dark:bg-blue-900/30">
+              <div className="p-2 sm:p-3 md:p-4 bg-white/45 dark:bg-blue-900/30">
                 <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-900 dark:text-white">
                   AI 챗봇 상담
                 </h3>
@@ -144,13 +145,11 @@ export default function ContactSection() {
                     key={index}
                     className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
                   >
-                    <div
-                      className={`max-w-[85%] p-1.5 sm:p-2 md:p-3 rounded-xl text-xs sm:text-sm md:text-base ${
-                        message.type === 'user'
-                          ? 'bg-blue-500/20 text-blue-900 dark:text-blue-100'
-                          : 'bg-blue-100 dark:bg-blue-900/30 text-gray-900 dark:text-gray-100'
-                      }`}
-                    >
+                    <div className={`max-w-[85%] p-1.5 sm:p-2 md:p-3 rounded-xl text-xs sm:text-sm md:text-base ${
+                      message.type === 'user'
+                        ? 'bg-white/25 text-gray-900 dark:text-blue-100 dark:bg-blue-500/20'
+                        : 'bg-white/25 text-gray-900 dark:text-gray-100 dark:bg-blue-900/30'
+                    }`}>
                       {message.content}
                     </div>
                   </div>
@@ -166,18 +165,18 @@ export default function ContactSection() {
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="메시지를 입력하세요..."
                     className="flex-1 min-w-0 p-1.5 sm:p-2 text-xs sm:text-sm md:text-base rounded-lg 
-                            bg-blue-100 dark:bg-blue-900/30
-                            text-gray-900 dark:text-white border-none 
-                            focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400
-                            placeholder:text-gray-500 dark:placeholder:text-gray-400"
+                    bg-white/45 dark:bg-blue-900/30
+                    text-gray-900 dark:text-white border-none 
+                    focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400
+                    placeholder:text-gray-500 dark:placeholder:text-gray-400"
                   />
                   <button
                     type="submit"
                     className="flex-shrink-0 p-1.5 sm:p-2 rounded-lg 
-                            bg-blue-500/20 dark:bg-blue-400/20 
-                            text-blue-700 dark:text-blue-300 
-                            hover:bg-blue-500/30 dark:hover:bg-blue-400/30 
-                            transition-colors"
+                    bg-white/45 dark:bg-blue-400/20 
+                    text-blue-700 dark:text-blue-300 
+                    hover:bg-white/25 dark:hover:bg-blue-400/30 
+                    transition-colors"
                   >
                     <BiSend className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" />
                   </button>

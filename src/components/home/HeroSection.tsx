@@ -18,21 +18,23 @@ export default function HeroSection() {
       >
         <motion.h1 
           className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-extrabold text-gray-900 dark:text-white 
-                     mb-2 sm:mb-3 md:mb-4 lg:mb-5 tracking-tighter leading-tight"
+                     mb-2 sm:mb-3 md:mb-4 lg:mb-5 tracking-tighter leading-tight theme-transition-heading"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
+          style={{ fontFamily: 'GumiIndustryTTF' }}
         >
           안녕하세요, 신건우입니다.
         </motion.h1>
         
         <motion.h2 
           className="text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 
-                     bg-clip-text text-transparent dark:from-blue-400 dark:to-cyan-300 
-                     mb-3 sm:mb-4 md:mb-5 lg:mb-6 tracking-normal"
+                     bg-clip-text text-transparent dark:from-indigo-400 dark:via-purple-200 
+                     mb-3 sm:mb-4 md:mb-5 lg:mb-6 theme-transition-heading"
+          style={{ fontFamily: 'Bai Jamjuree' }}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
           Data Analyst & Front-end Developer
         </motion.h2>
@@ -42,7 +44,7 @@ export default function HeroSection() {
                     max-w-xs sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto 
                     leading-relaxed sm:leading-loose px-2 sm:px-3 md:px-4 
                     tracking-normal
-                    mb-4 sm:mb-6 md:mb-8"
+                    mb-4 sm:mb-6 md:mb-8 theme-transition-heading"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
@@ -68,8 +70,8 @@ export default function HeroSection() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <SiNotion className="w-4 h-4 sm:w-5 sm:h-5" />
-            <span className="hidden sm:inline">이력서 보기</span>
+            <SiNotion className="w-4 h-4 sm:w-5 sm:h-5 theme-transition-icon" />
+            <span className="hidden sm:inline theme-transition-icon">이력서 보기</span>
           </motion.a>
   
           <motion.a 
@@ -83,7 +85,7 @@ export default function HeroSection() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <FaGithub className="w-4 h-4 sm:w-5 sm:h-5" />
+            <FaGithub className="w-4 h-4 sm:w-5 sm:h-5 theme-transition-icon" />
           </motion.a>
   
           <motion.a 
@@ -97,7 +99,7 @@ export default function HeroSection() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <FaLinkedin className="w-4 h-4 sm:w-5 sm:h-5" />
+            <FaLinkedin className="w-4 h-4 sm:w-5 sm:h-5 theme-transition-icon" />
           </motion.a>
         </motion.div>
       </motion.div>

@@ -220,22 +220,26 @@ export default function AboutAndSkills() {
                 {/* Profile Information */}
                 <div className="space-y-4 sm:space-y-6">
                   <div>
-                    <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2 sm:mb-4">Profile</h3>
+                    <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2 sm:mb-4 theme-transition-heading"
+                    style={{ fontFamily: 'Bai Jamjuree' }}>
+                    Profile</h3>
                     <div className="space-y-1 sm:space-y-2 text-xs sm:text-sm">
-                      <p className="text-gray-600 dark:text-gray-300">
+                      <p className="text-gray-600 dark:text-gray-300 theme-transition-text">
                         <span className="font-medium"></span> {profile.name}
                       </p>
-                      <p className="text-gray-600 dark:text-gray-300">
+                      <p className="text-gray-600 dark:text-gray-300 theme-transition-text">
                         <span className="font-medium"></span> {profile.age}
                       </p>
                     </div>
                   </div>
 
                   <div>
-                    <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2 sm:mb-4">Education</h3>
+                    <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2 sm:mb-4 theme-transition-heading"
+                      style={{ fontFamily: 'Bai Jamjuree' }}>
+                      Education</h3>
                     <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm">
                       {profile.education.map((edu, index) => (
-                        <li key={index} className="text-gray-600 dark:text-gray-300">{edu}</li>
+                        <li key={index} className="text-gray-600 dark:text-gray-300 theme-transition-text">{edu}</li>
                       ))}
                     </ul>
                   </div>
@@ -252,10 +256,17 @@ export default function AboutAndSkills() {
 
                 {/* Introduction */}
                 <div>
-                  <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2 sm:mb-4">About Me</h3>
-                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                    {aboutMe}
-                  </p>
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2 sm:mb-4 theme-transition-heading"
+                  style={{ fontFamily: 'Bai Jamjuree' }}>
+                  About Me</h3>
+                  <p className="text-xs sm:text-[11px] md:text-[12px] lg:text-sm text-gray-600 dark:text-gray-300 
+                    leading-relaxed sm:leading-loose lg:leading-[1.5] xl:leading-[1.8]
+                    tracking-tighter
+                    break-keep
+                    pl-0.5
+                    theme-transition-text">
+                  {aboutMe}
+                </p>
                 </div>
               </motion.div>
             ) : (
@@ -280,7 +291,8 @@ export default function AboutAndSkills() {
                       transition={{ delay: index * 0.1 }}
                       className="relative"
                     >
-                      <h3 className="text-blue-500 dark:text-blue-400 font-semibold text-xs sm:text-sm md:text-base lg:text-lg mb-2 sm:mb-3 md:mb-4 flex items-center gap-2">
+                      <h3 className="text-blue-500 dark:text-blue-400 font-semibold text-xs sm:text-sm md:text-base lg:text-lg mb-2 sm:mb-3 md:mb-4 flex items-center gap-2 theme-transition-heading"
+                      style={{ fontFamily: 'Bai Jamjuree' }}>
                         {category.category}
                         <span className="h-px flex-grow bg-blue-500/20 dark:bg-blue-400/20 ml-2" />
                       </h3>
@@ -296,20 +308,21 @@ export default function AboutAndSkills() {
                                           hover:bg-blue-50 dark:hover:bg-blue-900/20 
                                           transition-colors duration-200
                                           backdrop-blur-sm
-                                          border border-gray-200 dark:border-gray-700">
+                                          border border-gray-200 dark:border-gray-700
+                                          theme-transition">
                               <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 flex items-center justify-center 
-                                            bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                                            bg-blue-100 dark:bg-blue-900/30 rounded-full theme-transition">
                                 {item.icon ? (
-                                  <span className="text-blue-500 dark:text-blue-400 text-xs sm:text-sm md:text-base lg:text-lg">
+                                  <span className="text-blue-500 dark:text-blue-400 text-xs sm:text-sm md:text-base lg:text-lg theme-transition-icon">
                                     {item.icon}
                                   </span>
                                 ) : (
-                                  <span className="text-blue-500 dark:text-blue-400 text-[10px] sm:text-xs font-medium">
+                                  <span className="text-blue-500 dark:text-blue-400 text-[10px] sm:text-xs font-medium theme-transition-icon">
                                     {item.name.slice(0, 2)}
                                   </span>
                                 )}
                               </div>
-                              <span className="text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 truncate">
+                              <span className="text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 truncate theme-transition-icon">
                                 {item.name}
                               </span>
                             </div>
