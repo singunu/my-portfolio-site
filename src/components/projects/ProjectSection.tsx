@@ -316,7 +316,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
                          rounded-full
                          bg-blue-500/5 dark:bg-blue-400/5
                          hover:bg-blue-500/10 dark:hover:bg-blue-400/10
-                         transition-all duration-300 
+                         transition-all 
                          group"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
