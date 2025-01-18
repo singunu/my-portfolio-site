@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     optimizeCss: true,
-    // scrollRestoration: true,
+    scrollRestoration: true,
   }
 };
 
