@@ -14,7 +14,7 @@ export default function HeroSection() {
         className="w-full max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl mx-auto relative z-10 text-center"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.5 }}
       >
         <motion.h1 
           className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-extrabold text-gray-900 dark:text-white 
@@ -22,7 +22,12 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          style={{ fontFamily: 'GumiIndustryTTF' }}
+          style={{
+            fontFamily: 'GumiIndustryTTF',
+            WebkitBackfaceVisibility: "hidden",
+            WebkitTransform: "translate3d(0, 0, 0)",
+            willChange: "transform"
+          }}
         >
           안녕하세요, 신건우입니다.
         </motion.h1>
@@ -31,10 +36,15 @@ export default function HeroSection() {
           className="text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 
                      bg-clip-text text-transparent dark:from-indigo-400 dark:via-purple-200 
                      mb-3 sm:mb-4 md:mb-5 lg:mb-6 theme-transition-heading"
-          style={{ fontFamily: 'Bai Jamjuree' }}
+          style={{ 
+          fontFamily: 'Bai Jamjuree',
+          WebkitBackfaceVisibility: "hidden",
+          WebkitTransform: "translate3d(0, 0, 0)",
+          willChange: "transform"
+          }}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
         >
           Data Analyst & Front-end Developer
         </motion.h2>
@@ -47,7 +57,12 @@ export default function HeroSection() {
                     mb-4 sm:mb-6 md:mb-8 theme-transition-heading"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          style={{ 
+            WebkitBackfaceVisibility: "hidden",
+            WebkitTransform: "translate3d(0, 0, 0)",
+            willChange: "transform"
+          }}
         >
           데이터를 이해하기 쉽게 전달하고,
           <br className="hidden sm:block" />
