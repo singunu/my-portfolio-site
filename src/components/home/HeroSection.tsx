@@ -18,7 +18,7 @@ export default function HeroSection() {
       >
         <motion.h1 
           className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-extrabold text-gray-900 dark:text-white 
-                     mb-2 sm:mb-3 md:mb-4 lg:mb-5 tracking-tighter leading-tight theme-transition-heading"
+                     mb-2 sm:mb-3 md:mb-4 lg:mb-5 tracking-tighter leading-tight"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -35,7 +35,7 @@ export default function HeroSection() {
         <motion.h2 
           className="text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 
                      bg-clip-text text-transparent dark:from-indigo-400 dark:via-purple-200 
-                     mb-3 sm:mb-4 md:mb-5 lg:mb-6 theme-transition-heading"
+                     mb-3 sm:mb-4 md:mb-5 lg:mb-6"
           style={{ 
           fontFamily: 'Bai Jamjuree',
           WebkitBackfaceVisibility: "hidden",
@@ -54,7 +54,7 @@ export default function HeroSection() {
                     max-w-xs sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto 
                     leading-relaxed sm:leading-loose px-2 sm:px-3 md:px-4 
                     tracking-normal
-                    mb-4 sm:mb-6 md:mb-8 theme-transition-heading"
+                    mb-4 sm:mb-6 md:mb-8"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
