@@ -31,7 +31,7 @@ export default function Home() {
   };
 
   return (
-    <div className="relative h-screen overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden">
       <div className="absolute inset-0">
         <AnimatePresence mode="wait">
           <motion.div

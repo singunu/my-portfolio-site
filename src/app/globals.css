@@ -146,7 +146,9 @@ body {
   body {
     will-change: background-position;
   }
-  
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
   .glassmorphism {
     will-change: backdrop-filter;
     transform: translateZ(0);
