@@ -43,6 +43,7 @@
 html {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
+  height: -webkit-fill-available;
 }
 
 /* 기본 스타일 */
@@ -64,6 +65,7 @@ body {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -webkit-overflow-scrolling: touch;
+  min-height: -webkit-fill-available;
 }
 
 /* *, *::before, *::after {
@@ -143,6 +145,7 @@ body {
 @supports (-webkit-touch-callout: none) {
   body {
     will-change: background-position;
+    padding-bottom: env(safe-area-inset-bottom);
   }
   
   .glassmorphism {
