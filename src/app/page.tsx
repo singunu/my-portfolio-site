@@ -31,28 +31,28 @@ export default function Home() {
   };
 
   return (
-    <div className="fixed inset-0 overflow-hidden">
-    <div className="absolute inset-0">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentSection}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          variants={variants}
-          transition={{ duration: 0.5 }}
-          className="h-full"
-        >
-          {currentSection === 'about' && <AboutSection />}
-          {currentSection === 'projects' && <ProjectSection />}
-          {currentSection === 'contact' && <ContactSection />}
-          {currentSection === 'home' && <HeroSection />}
-        </motion.div>
-      </AnimatePresence>
+    <div className="fixed inset-0 overflow-hidden w-full h-full">
+      <div className="absolute inset-0 w-full h-full">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSection}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            variants={variants}
+            transition={{ duration: 0.5 }}
+            className="w-full h-full"
+          >
+            {currentSection === 'about' && <AboutSection />}
+            {currentSection === 'projects' && <ProjectSection />}
+            {currentSection === 'contact' && <ContactSection />}
+            {currentSection === 'home' && <HeroSection />}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+      <div className="relative z-50">
+        <Navbar onSectionChange={handleSectionChange} />
+      </div>
     </div>
-    <div className="relative z-50">
-      <Navbar onSectionChange={handleSectionChange} />
-    </div>
-  </div>
   );
 }

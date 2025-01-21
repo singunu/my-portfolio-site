@@ -152,8 +152,8 @@ export default function AboutAndSkills() {
       {/* Main Content */}
       <div 
         ref={containerRef}
-        className="relative h-full overflow-y-auto hide-scrollbar px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-12"
-      >
+        className="relative h-full overflow-y-auto hide-scrollbar px-3 sm:px-4 md:px-6 pt-20 pb-6 sm:pt-24 sm:pb-8 md:pt-28 md:pb-12" // 패딩 값 더 증가
+        >
         <motion.div
           className="max-w-3xl mx-auto glassmorphism p-4 sm:p-5 md:p-6 rounded-xl"
           initial={{ opacity: 0, y: 20 }}
