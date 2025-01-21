@@ -66,7 +66,7 @@ export default function ContactSection() {
         />
       </div>
 
-      <div className="relative z-10 h-full overflow-y-auto hide-scrollbar px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-12">
+      <div className="relative z-10 h-full overflow-y-auto hide-scrollbar px-3 sm:px-4 md:px-6 pt-16 pb-6 sm:pt-20 sm:pb-8 md:pt-24 md:pb-12">
         <motion.div
           className="max-w-6xl mx-auto"
           initial={{ opacity: 0, y: 20 }}

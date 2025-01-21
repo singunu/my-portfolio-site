@@ -40,7 +40,9 @@ export default function HeroSection() {
           fontFamily: 'Bai Jamjuree',
           WebkitBackfaceVisibility: "hidden",
           WebkitTransform: "translate3d(0, 0, 0)",
-          willChange: "transform"
+          willChange: "transform",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent"
           }}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

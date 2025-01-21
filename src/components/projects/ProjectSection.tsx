@@ -373,7 +373,7 @@ const ProjectSection: React.FC = () => {
 
       {/* Content */}
       <div className="relative h-full overflow-y-auto">
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 py-8 sm:py-10 md:py-12">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 pt-16 pb-8 sm:pt-20 sm:pb-10 md:pt-24 md:pb-12">
           <motion.h2 
             className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-8 sm:mb-12 md:mb-16 
                        text-gray-900 dark:text-white"

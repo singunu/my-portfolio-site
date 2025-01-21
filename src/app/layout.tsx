@@ -13,7 +13,8 @@ export const metadata = {
     viewportFit: 'cover',
     minimumScale: 1,
     maximumScale: 1,
-    userScalable: false
+    userScalable: false,
+    'viewport-fit': 'cover'
   }
 }
 
