@@ -25,10 +25,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" suppressHydrationWarning>
-      <body>
-        <Providers>
-          {children}
-        </Providers>
+      <body className="h-screen">
+        <main className="h-full">
+          <Providers>
+            {children}
+          </Providers>
+        </main>
       </body>
     </html>
   )
