@@ -31,8 +31,8 @@ export default function Home() {
   };
 
   return (
-    <div className="fixed inset-0 overflow-hidden w-full h-full">
-      <div className="absolute inset-0 w-full h-full">
+    <div className="h-svh w-screen overflow-hidden relative">
+      <div className="absolute inset-0">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSection}
@@ -50,7 +50,7 @@ export default function Home() {
           </motion.div>
         </AnimatePresence>
       </div>
-      <div className="relative z-50">
+      <div className="absolute inset-x-0 bottom-0 z-50">
         <Navbar onSectionChange={handleSectionChange} />
       </div>
     </div>
