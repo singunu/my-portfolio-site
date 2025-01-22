@@ -31,8 +31,8 @@ export default function Home() {
   };
 
   return (
-    <div className="h-screen w-full flex flex-col overflow-hidden">
-      <div className="flex-1 relative">
+    <div className="relative h-screen overflow-hidden">
+      <div className="absolute inset-0">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSection}
@@ -41,7 +41,7 @@ export default function Home() {
             exit="exit"
             variants={variants}
             transition={{ duration: 0.5 }}
-            className="absolute inset-0"
+            className="h-full"
           >
             {currentSection === 'about' && <AboutSection />}
             {currentSection === 'projects' && <ProjectSection />}
@@ -50,7 +50,7 @@ export default function Home() {
           </motion.div>
         </AnimatePresence>
       </div>
-      <div className="sticky bottom-0 left-0 right-0 z-50">
+      <div className="relative z-50">
         <Navbar onSectionChange={handleSectionChange} />
       </div>
     </div>
