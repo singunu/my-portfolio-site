@@ -29,10 +29,23 @@ export default function AboutAndSkills() {
   const aboutButtonRef = useRef<HTMLButtonElement>(null);
   const skillsButtonRef = useRef<HTMLButtonElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isEdgeMobile, setIsEdgeMobile] = useState(false);
   const [buttonDimensions, setButtonDimensions] = useState({
     width: 0,
     left: 0
   });
+
+  useEffect(() => {
+    const checkBrowser = () => {
+      const isEdge = /Edg/.test(navigator.userAgent);
+      const isMobile = window.innerWidth < 640;
+      setIsEdgeMobile(isEdge && isMobile);
+    };
+    
+    checkBrowser();
+    window.addEventListener('resize', checkBrowser);
+    return () => window.removeEventListener('resize', checkBrowser);
+  }, []);
 
   const updateButtonDimensions = () => {
     const activeButton = activeSection === 'about' ? aboutButtonRef.current : skillsButtonRef.current;
@@ -152,8 +165,10 @@ export default function AboutAndSkills() {
       {/* Main Content */}
       <div 
         ref={containerRef}
-        className="relative h-full overflow-y-auto hide-scrollbar px-3 sm:px-4 md:px-6 pt-20 pb-6 sm:pt-24 sm:pb-8 md:pt-20 lg:pt-16 xl:pt-12 md:pb-12"
-        >
+        className={`relative h-full overflow-y-auto hide-scrollbar px-3 sm:px-4 md:px-6 
+          ${isEdgeMobile ? 'pt-12' : 'pt-20'} 
+          pb-6 sm:pt-24 sm:pb-8 md:pt-20 lg:pt-16 xl:pt-12 md:pb-12`}
+      >
         <motion.div
           className="max-w-3xl mx-auto glassmorphism p-4 sm:p-5 md:p-6 rounded-xl"
           initial={{ opacity: 0, y: 20 }}
@@ -205,18 +220,18 @@ export default function AboutAndSkills() {
           <AnimatePresence mode="wait">
             {activeSection === 'about' ? (
               <motion.div
-  key="about"
-  initial={{ opacity: 0, x: -20 }}
-  animate={{ opacity: 1, x: 0 }}
-  exit={{ opacity: 0, x: 20 }}
-  transition={{ duration: 0.3 }}
-  className="mt-4 sm:mt-6 grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8"
-  style={{
-    WebkitBackfaceVisibility: "hidden",
-    WebkitTransform: "translate3d(0, 0, 0)",
-    willChange: "transform"  // style 객체 안으로 이동
-  }}
->
+                key="about"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.3 }}
+                className="mt-4 sm:mt-6 grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8"
+                style={{
+                  WebkitBackfaceVisibility: "hidden",
+                  WebkitTransform: "translate3d(0, 0, 0)",
+                  willChange: "transform"  // style 객체 안으로 이동
+                }}
+              >
                 {/* Profile Information */}
                 <div className="space-y-4 sm:space-y-6">
                   <div>
@@ -278,12 +293,13 @@ export default function AboutAndSkills() {
                 transition={{ duration: 0.5 }}
                 className="mt-4 sm:mt-6 relative"
               >
-                <div className="max-h-[calc(100vh-240px)] sm:max-h-[calc(100vh-260px)] md:max-h-[calc(100vh-280px)]
-                              overflow-y-auto overflow-x-visible pr-2 space-y-6 sm:space-y-8 
-                              pb-8 sm:pb-12 md:pb-16 pt-2 sm:pt-4
-                              scrollbar-thin scrollbar-thumb-blue-500/20 scrollbar-track-blue-100/10
-                              dark:scrollbar-thumb-blue-400/20 dark:scrollbar-track-gray-800/10">
-                  {skills.map((category, index) => (
+                <div className={`overflow-y-auto overflow-x-visible pr-2 space-y-6 sm:space-y-8 
+                  pb-8 sm:pb-12 md:pb-16 pt-2 sm:pt-4
+                  max-h-[calc(100vh-360px)] sm:max-h-[calc(100vh-340px)] md:max-h-[calc(100vh-320px)]
+                  mb-16
+                  scrollbar-thin scrollbar-thumb-blue-500/20 scrollbar-track-blue-100/10
+                  dark:scrollbar-thumb-blue-400/20 dark:scrollbar-track-gray-800/10`}>
+                    {skills.map((category, index) => (
                     <motion.div
                       key={category.category}
                       initial={{ opacity: 0, y: 20 }}
