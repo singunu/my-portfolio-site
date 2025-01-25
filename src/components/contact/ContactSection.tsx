@@ -126,8 +126,7 @@ export default function ContactSection() {
 
             {/* Chat Interface */}
             <motion.div
-              className="glassmorphism rounded-xl sm:rounded-2xl overflow-hidden flex flex-col w-full
-                        h-[400px] sm:h-[450px] md:h-[500px] lg:h-[350px]"  // 여기에 높이 고정 추가
+              className="glassmorphism rounded-xl sm:rounded-2xl overflow-hidden flex flex-col w-full"
               initial={{ x: 50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.3 }}
@@ -140,14 +139,13 @@ export default function ContactSection() {
               
               {/* 채팅 메시지 영역 */}
               <div className="flex-1 p-2 sm:p-3 md:p-4 overflow-y-auto space-y-2 sm:space-y-3 md:space-y-4 
-                max-h-[250px] sm:max-h-[300px] md:max-h-[320px] lg:max-h-[350px] xl:max-h-[400px]
-                mb-16">
+                            max-h-[250px] sm:max-h-[350px] md:max-h-[450px]">
                 {messages.map((message, index) => (
                   <div
                     key={index}
                     className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
                   >
-                    <div className={`max-w-[85%] p-1.5 sm:p-2 md:p-3 rounded-xl text-xs sm:text-sm md:text-base lg:text-sm ${
+                    <div className={`max-w-[85%] p-1.5 sm:p-2 md:p-3 rounded-xl text-xs sm:text-sm md:text-base ${
                       message.type === 'user'
                         ? 'bg-white/25 text-gray-900 dark:text-blue-100 dark:bg-blue-500/20'
                         : 'bg-white/25 text-gray-900 dark:text-gray-100 dark:bg-blue-900/30'

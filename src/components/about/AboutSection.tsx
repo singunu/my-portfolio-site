@@ -166,7 +166,7 @@ export default function AboutAndSkills() {
       <div 
         ref={containerRef}
         className={`relative h-full overflow-y-auto hide-scrollbar px-3 sm:px-4 md:px-6 
-          ${isEdgeMobile ? 'pt-12' : 'pt-20'} 
+          ${isEdgeMobile ? 'pt-12' : 'pt-12'} 
           pb-6 sm:pt-24 sm:pb-8 md:pt-20 lg:pt-16 xl:pt-12 md:pb-12`}
       >
         <motion.div
