@@ -1,15 +1,15 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaEnvelope, FaPhone, FaLink } from 'react-icons/fa';
-import { BiSend } from 'react-icons/bi';
+// import { BiSend } from 'react-icons/bi';
 
 export default function ContactSection() {
-  const [messages, setMessages] = useState([
-    { type: 'bot', content: '안녕하세요! 저에 대해 궁금하신 점을 물어보세요.' }
-  ]);
-  const [input, setInput] = useState('');
+  // const [messages, setMessages] = useState([
+  //   { type: 'bot', content: '안녕하세요! 저에 대해 궁금하신 점을 물어보세요.' }
+  // ]);
+  // const [input, setInput] = useState('');
 
   const contactInfo = {
     email: "singunu17@gmail.com",
@@ -18,17 +18,17 @@ export default function ContactSection() {
     notion: "https://verbose-hoodie-b9b.notion.site/1509a4450304809fab3afaac417ab2ff?pvs=4"
   };
 
-  const handleSendMessage = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim()) return;
+  // const handleSendMessage = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   if (!input.trim()) return;
 
-    setMessages([
-      ...messages,
-      { type: 'user', content: input },
-      { type: 'bot', content: '죄송합니다. 현재 AI 채팅 기능은 준비중입니다.' }
-    ]);
-    setInput('');
-  };
+  //   setMessages([
+  //     ...messages,
+  //     { type: 'user', content: input },
+  //     { type: 'bot', content: '죄송합니다. 현재 AI 채팅 기능은 준비중입니다.' }
+  //   ]);
+  //   setInput('');
+  // };
 
   return (
     <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-blue-50/50 to-cyan-50/50 dark:from-blue-900/20 dark:to-cyan-900/20">
@@ -73,16 +73,16 @@ export default function ContactSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-8 sm:mb-12 md:mb-16 text-gray-900 dark:text-white"
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-14 text-gray-900 dark:text-white"
           style={{ fontFamily: 'Bai Jamjuree' }}>
             Contact
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-10">
+          <div className="grid justify-center gap-4 sm:gap-6 md:gap-10">
             {/* Contact Info */}
             <motion.div
               className="glassmorphism rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6"
-              initial={{ x: -50, opacity: 0 }}
+              initial={{ y: 0, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
@@ -125,7 +125,7 @@ export default function ContactSection() {
             </motion.div>
 
             {/* Chat Interface */}
-            <motion.div
+            {/* <motion.div
               className="glassmorphism rounded-xl sm:rounded-2xl overflow-hidden flex flex-col w-full"
               initial={{ x: 50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
@@ -135,10 +135,10 @@ export default function ContactSection() {
                 <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-900 dark:text-white">
                   AI 챗봇 상담
                 </h3>
-              </div>
+              </div> */}
               
               {/* 채팅 메시지 영역 */}
-              <div className="flex-1 p-2 sm:p-3 md:p-4 overflow-y-auto space-y-2 sm:space-y-3 md:space-y-4 
+              {/* <div className="flex-1 p-2 sm:p-3 md:p-4 overflow-y-auto space-y-2 sm:space-y-3 md:space-y-4 
                             max-h-[250px] sm:max-h-[350px] md:max-h-[450px]">
                 {messages.map((message, index) => (
                   <div
@@ -154,10 +154,10 @@ export default function ContactSection() {
                     </div>
                   </div>
                 ))}
-              </div>
+              </div> */}
 
               {/* 입력 폼 */}
-              <form onSubmit={handleSendMessage} className="border-t border-gray-200 dark:border-gray-700">
+              {/* <form onSubmit={handleSendMessage} className="border-t border-gray-200 dark:border-gray-700">
                 <div className="flex items-center p-1.5 sm:p-2 md:p-3 gap-1 sm:gap-2">
                   <input
                     type="text"
@@ -182,7 +182,7 @@ export default function ContactSection() {
                   </button>
                 </div>
               </form>
-            </motion.div>
+            </motion.div> */}
           </div>
         </motion.div>
       </div>

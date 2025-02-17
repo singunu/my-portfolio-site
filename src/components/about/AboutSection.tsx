@@ -296,7 +296,7 @@ export default function AboutAndSkills() {
                 <div className={`overflow-y-auto overflow-x-visible pr-2 space-y-6 sm:space-y-8 
                   pb-8 sm:pb-12 md:pb-16 pt-2 sm:pt-4
                   max-h-[calc(100vh-360px)] sm:max-h-[calc(100vh-340px)] md:max-h-[calc(100vh-320px)]
-                  mb-16
+                  mb-1
                   scrollbar-thin scrollbar-thumb-blue-500/20 scrollbar-track-blue-100/10
                   dark:scrollbar-thumb-blue-400/20 dark:scrollbar-track-gray-800/10`}>
                     {skills.map((category, index) => (
@@ -307,29 +307,29 @@ export default function AboutAndSkills() {
                       transition={{ delay: index * 0.1 }}
                       className="relative"
                     >
-                      <h3 className="text-blue-500 dark:text-blue-400 font-semibold text-xs sm:text-sm md:text-base lg:text-lg mb-2 sm:mb-3 md:mb-4 flex items-center gap-2 theme-transition-heading"
+                      <h3 className="text-blue-500 dark:text-blue-400 font-semibold text-xs sm:text-sm md:text-base lg:text-base xl:text-lg mb-2 sm:mb-3 md:mb-4 flex items-center gap-2 theme-transition-heading"
                       style={{ fontFamily: 'Bai Jamjuree' }}>
                         {category.category}
                         <span className="h-px flex-grow bg-blue-500/20 dark:bg-blue-400/20 ml-2" />
                       </h3>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1.5 sm:gap-2 md:gap-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1.5 sm:gap-2 md:gap-3 lg:gap-2 xl:gap-3">
                         {category.items.map((item) => (
                           <motion.div
                             key={item.name}
                             className="group relative"
                             whileHover={{ scale: 1.02 }}
                           >
-                            <div className="flex items-center gap-1.5 sm:gap-2 md:gap-3 p-1.5 sm:p-2 md:p-3 
+                            <div className="flex items-center gap-1.5 sm:gap-2 md:gap-3 lg:gap-2 xl:gap-3 p-1.5 sm:p-2 md:p-3 lg:p-2 xl:p-3
                                           bg-white/50 dark:bg-gray-800/50 rounded-lg 
                                           hover:bg-blue-50 dark:hover:bg-blue-900/20 
                                           transition-colors duration-200
                                           backdrop-blur-sm
                                           border border-gray-200 dark:border-gray-700
                                           theme-transition">
-                              <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 flex items-center justify-center 
+                              <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-6 lg:h-6 xl:w-8 xl:h-8 flex items-center justify-center
                                             bg-blue-100 dark:bg-blue-900/30 rounded-full theme-transition">
                                 {item.icon ? (
-                                  <span className="text-blue-500 dark:text-blue-400 text-xs sm:text-sm md:text-base lg:text-lg theme-transition-icon">
+                                  <span className="text-blue-500 dark:text-blue-400 text-xs sm:text-sm md:text-base lg:text-sm xl:text-lg theme-transition-icon">
                                     {item.icon}
                                   </span>
                                 ) : (
@@ -338,7 +338,7 @@ export default function AboutAndSkills() {
                                   </span>
                                 )}
                               </div>
-                              <span className="text-[10px] sm:text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 truncate theme-transition-icon">
+                              <span className="text-[10px] sm:text-xs md:text-sm lg:text-xs xl:text-sm font-medium text-gray-700 dark:text-gray-300 truncate theme-transition-icon">
                                 {item.name}
                               </span>
                             </div>

@@ -34,7 +34,7 @@ export default function HeroSection() {
         
         <motion.h2 
           className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 
-                     bg-clip-text text-transparent dark:from-indigo-400 dark:via-purple-200 
+                     bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-100 
                      mb-3 sm:mb-4 md:mb-5 lg:mb-6"
           style={{ 
           fontFamily: 'Bai Jamjuree',
