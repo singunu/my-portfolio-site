@@ -78,14 +78,13 @@ export default function AboutAndSkills() {
     ],
   };
   
-  const aboutMe = `
-    안녕하십니까 신건우입니다.
-저는 으레 데이터와 사용자 사이의 거리를 좁히는 과정은 무엇일까 고민하곤 합니다.
-숫자와 단어들 사이에서 의미 있는 이야기를 발견하고, 그 이야기를 누구나 공감할 수 있는 방식으로 풀어내고 싶습니다.
- 탐구하고 패턴화하는 걸 좋아하는지라 레퍼런스 검색과 트렌드 리서치, 여가활동에서도 여러 배움이 있어왔습니다.
-  그중에 책이나 영화 같은 어떤 추체험적인 채널들을 통해 취한 다각적인 관점들은 지금도 제 일의 깊이를 더해주는 소중한 자산입니다. 개발자로서 본분에 임하며 심미성과 통계적 추론 사이에서 만들어나가는 도전으로, 실용적인 해결책까지 도달하는 즐거움을 얻고 또 꾸준히 발전하고자 합니다.
-
-  `;
+  const aboutMe = [
+  "데이터와 사람 사이의 거리를 좁히는 일을 합니다.",
+  "숫자 뒤에 있는 맥락을 읽고, 그걸 사람이 움직일 수 있는 말로 바꾸는 일을 해왔습니다. 시스템만으로 사람이 움직이지 않는다는 건 여러 번 부딪히며 배운 것입니다. 설계보다 설득이 먼저였고, 효율보다 신뢰가 남았습니다.",
+  "차트든 사람이든, 굴곡에는 이유가 있다고 보는 편입니다. 디자인에서 개발로, 개발에서 프로젝트 관리로. 돌아온 길이지만, 그 시간이 시야를 넓혀주었고 하나가 아닌 여러 답을 볼 수 있게 해주었습니다.",
+  "개발도 하고 분석도 합니다. 통계로 기준을 세우고, Django, Python으로 자동화하고, React나 Vue로 전달합니다. 하지만 도구보다 중요한 건 그걸로 어떤 가치를 만드느냐였습니다.",
+  "복잡한 것을 단순하게 정리하고, 흩어진 것을 이어붙이는 일. 그 끝에 쓸 만한 해결책이 나올 때, 그게 제일 좋습니다."
+];
 
   const skills: Category[] = [
     {
@@ -272,16 +271,20 @@ export default function AboutAndSkills() {
                 {/* Introduction */}
                 <div>
                   <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2 sm:mb-4 theme-transition-heading"
-                  style={{ fontFamily: 'Bai Jamjuree' }}>
-                  About Me</h3>
-                  <p className="text-xs sm:text-[11px] md:text-[12px] lg:text-sm text-gray-600 dark:text-gray-300 
-                    leading-relaxed sm:leading-loose lg:leading-[1.5] xl:leading-[1.8]
-                    tracking-tighter
-                    break-keep
-                    pl-0.5
-                    theme-transition-text">
-                  {aboutMe}
-                </p>
+                    style={{ fontFamily: 'Bai Jamjuree' }}>
+                    About Me
+                  </h3>
+                  <div className="space-y-2 sm:space-y-3">
+                    {aboutMe.map((paragraph, index) => (
+                      <p key={index} className="text-xs sm:text-[11px] md:text-[12px] lg:text-sm text-gray-600 dark:text-gray-300 
+                        leading-relaxed sm:leading-loose lg:leading-[1.5] xl:leading-[1.8]
+                        tracking-tighter
+                        break-keep
+                        theme-transition-text">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             ) : (
