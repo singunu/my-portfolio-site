@@ -258,23 +258,25 @@ useEffect(() => {
                 </div>
 
                 {/* Introduction */}
-                <div>
-                  <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2 sm:mb-4 theme-transition-heading"
-                    style={{ fontFamily: 'Bai Jamjuree' }}>
-                    About Me
-                  </h3>
-                  <div className="space-y-2 sm:space-y-3">
-                    {aboutMe.map((paragraph, index) => (
-                      <p key={index} className="text-xs sm:text-[11px] md:text-[12px] lg:text-sm text-gray-600 dark:text-gray-300 
-                        leading-relaxed sm:leading-loose lg:leading-[1.5] xl:leading-[1.8]
-                        tracking-tighter
-                        break-keep
-                        theme-transition-text">
-                        {paragraph}
-                      </p>
-                    ))}
+                  <div className="flex flex-col">
+                    <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2 sm:mb-4 theme-transition-heading"
+                      style={{ fontFamily: 'Bai Jamjuree' }}>
+                      About Me
+                    </h3>
+                    <div className="overflow-y-auto max-h-[200px] sm:max-h-[280px] md:max-h-none pr-2 scrollbar-thin scrollbar-thumb-blue-500/20 scrollbar-track-blue-100/10 dark:scrollbar-thumb-blue-400/20 dark:scrollbar-track-gray-800/10">
+                      <div className="space-y-2 sm:space-y-3">
+                        {aboutMe.map((paragraph, index) => (
+                          <p key={index} className="text-xs sm:text-[11px] md:text-[12px] lg:text-sm text-gray-600 dark:text-gray-300 
+                            leading-relaxed sm:leading-loose lg:leading-[1.5] xl:leading-[1.8]
+                            tracking-tighter
+                            break-keep
+                            theme-transition-text">
+                            {paragraph}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                </div>
               </motion.div>
             ) : (
               <motion.div
