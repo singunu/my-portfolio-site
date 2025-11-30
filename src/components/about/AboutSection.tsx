@@ -29,23 +29,10 @@ export default function AboutAndSkills() {
   const aboutButtonRef = useRef<HTMLButtonElement>(null);
   const skillsButtonRef = useRef<HTMLButtonElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isEdgeMobile, setIsEdgeMobile] = useState(false);
   const [buttonDimensions, setButtonDimensions] = useState({
     width: 0,
     left: 0
   });
-
-  useEffect(() => {
-    const checkBrowser = () => {
-      const isEdge = /Edg/.test(navigator.userAgent);
-      const isMobile = window.innerWidth < 640;
-      setIsEdgeMobile(isEdge && isMobile);
-    };
-    
-    checkBrowser();
-    window.addEventListener('resize', checkBrowser);
-    return () => window.removeEventListener('resize', checkBrowser);
-  }, []);
 
   const updateButtonDimensions = () => {
     const activeButton = activeSection === 'about' ? aboutButtonRef.current : skillsButtonRef.current;
@@ -59,14 +46,16 @@ export default function AboutAndSkills() {
   };
 
   useEffect(() => {
-    updateButtonDimensions();
-    window.addEventListener('resize', updateButtonDimensions);
-    return () => window.removeEventListener('resize', updateButtonDimensions);
-  }, []);
+  updateButtonDimensions();
+  window.addEventListener('resize', updateButtonDimensions);
+  return () => window.removeEventListener('resize', updateButtonDimensions);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, []);
 
-  useEffect(() => {
-    updateButtonDimensions();
-  }, [activeSection]);
+useEffect(() => {
+  updateButtonDimensions();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [activeSection]);
 
   const profile = {
     name: "신건우",
