@@ -21,7 +21,7 @@ export const projects: Project[] = [
     period: "2025.10 ~ 2026.01",
     duration: "약 4개월",
     description: "NIA(한국지능정보사회진흥원) 주관, TTA(한국정보통신기술협회) 담당 프로젝트. 8개 과제의 AI 학습 데이터에 대한 의미적 정확성 검사를 담당했습니다. IoU 기반 검사 기준을 직접 개발하고, Python 자동화 도구를 구축해 검사 일정 준수율 100%를 달성했습니다. 인건비 100만원 절감, 처리시간 90% 단축(22시간→1~2시간)의 성과를 거뒀습니다.",
-    image: "/images/alchera_logo.jpg",
+    image: "/images/NIA_logo.jpg",
     teamSize: "검사 담당",
     team: ["NIA (발주처)", "TTA (관리기관)", "수행사 다수"],
     role: [
@@ -54,7 +54,7 @@ export const projects: Project[] = [
     period: "2026.01.19 ~ 2026.06.05",
     duration: "약 5개월",
     description: "SKT AI 연구를 위한 문서이해 특화 멀티모달 데이터베이스 구축 프로젝트. 20,000장 문서에 대해 DLA → OCR → Table/Chart/Equation HTML → 최종 JSON 통합까지 7단계 파이프라인 전체를 설계·총괄했습니다. Upstage OCR/Document Parsing API, MathPix 등 외부 API를 연동하고 스크립트 15종 이상을 개발해 재현 가능한 파이프라인을 확립했습니다.",
-    image: "/images/alchera_logo.jpg",
+    image: "/images/SK텔레콤-로고.png",
     teamSize: "PM·총괄",
     team: ["프리랜서 작업자 55명", "사무실 근무자 10~20명"],
     role: [
@@ -68,28 +68,6 @@ export const projects: Project[] = [
       { name: "Project Management", color: "bg-indigo-600" },
       { name: "Data Pipeline", color: "bg-purple-600" },
       { name: "API Integration", color: "bg-teal-600" }
-    ],
-    link: "#",
-    category: "알체라"
-  },
-  {
-    title: "AI Tool Proposal",
-    titleKo: "사내 AI 업무 도입 제안서",
-    period: "2026년",
-    duration: "-",
-    description: "사내 업무 효율화를 위한 AI 도구 도입 제안서를 자발적으로 기획·제작했습니다. 현업 업무 프로세스를 분석해 AI 적용 가능 영역을 도출하고, 도구별 비교 분석·ROI 산출·단계별 도입 로드맵을 정리한 PPT 보고서를 작성했습니다.",
-    image: "/images/alchera_logo.jpg",
-    teamSize: "개인 기획",
-    team: ["개인 작업"],
-    role: [
-      "업무 프로세스 분석",
-      "AI 도구 비교 분석",
-      "도입 로드맵 설계",
-      "PPT 보고서 작성"
-    ],
-    skills: [
-      { name: "AI Planning", color: "bg-violet-600" },
-      { name: "Business Analysis", color: "bg-sky-600" }
     ],
     link: "#",
     category: "알체라"
@@ -160,7 +138,8 @@ export const projects: Project[] = [
       { name: "Data Labeling", color: "bg-emerald-600" },
       { name: "QA/QC", color: "bg-amber-600" }
     ],
-    link: "https://verbose-hoodie-b9b.notion.site/LG-AI-Document-Layout-Analysis-2ba9a44503048086a20bff60b83f0368?source=copy_link"
+    link: "https://verbose-hoodie-b9b.notion.site/LG-AI-Document-Layout-Analysis-2ba9a44503048086a20bff60b83f0368?source=copy_link",
+    category: "알체라"
   },
   {
     title: "RichBeats",
@@ -181,7 +160,8 @@ export const projects: Project[] = [
       { name: "Vue.js", color: "bg-emerald-600" },
       { name: "Django", color: "bg-green-700" }
     ],
-    link: "https://verbose-hoodie-b9b.notion.site/RichBeats-1509a4450304813c9283db28124e8ad1?pvs=4"
+    link: "https://verbose-hoodie-b9b.notion.site/RichBeats-1509a4450304813c9283db28124e8ad1?pvs=4",
+    category: "SSAFY"
   },
   {
     title: "Sixtale",
@@ -202,7 +182,8 @@ export const projects: Project[] = [
       { name: "Vue.js", color: "bg-emerald-600" },
       { name: "JavaScript", color: "bg-yellow-600" }
     ],
-    link: "https://verbose-hoodie-b9b.notion.site/Sixtale-1509a445030481089a3bd2c5ddad0494?pvs=4"
+    link: "https://verbose-hoodie-b9b.notion.site/Sixtale-1509a445030481089a3bd2c5ddad0494?pvs=4",
+    category: "SSAFY"
   },
   {
     title: "미정(味精)",
@@ -229,7 +210,8 @@ export const projects: Project[] = [
       { name: "React", color: "bg-purple-600" },
       { name: "JavaScript", color: "bg-yellow-600" }
     ],
-    link: "https://verbose-hoodie-b9b.notion.site/1509a445030481deb796dcb7cc23c782?pvs=4"
+    link: "https://verbose-hoodie-b9b.notion.site/1509a445030481deb796dcb7cc23c782?pvs=4",
+    category: "SSAFY"
   },
   {
     title: "Arcana",
@@ -254,6 +236,7 @@ export const projects: Project[] = [
       { name: "React", color: "bg-purple-600" },
       { name: "JavaScript", color: "bg-yellow-600" }
     ],
-    link: "https://verbose-hoodie-b9b.notion.site/ARCANA-1509a445030481648513f45f0ab30a65?pvs=4"
+    link: "https://verbose-hoodie-b9b.notion.site/ARCANA-1509a445030481648513f45f0ab30a65?pvs=4",
+    category: "SSAFY"
   }
 ];
