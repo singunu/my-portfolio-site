@@ -10,9 +10,136 @@ export interface Project {
   role: string[];
   skills: { name: string; color: string }[];
   link: string;
+  subTasks?: string[]; // TTA처럼 세부 과제 목록이 있는 경우
+  category?: string;  // 프로젝트 카테고리 (예: "알체라", "SSAFY")
 }
 
 export const projects: Project[] = [
+  {
+    title: "TTA AI Quality Inspection",
+    titleKo: "초거대AI 학습용 데이터 의미적 정확성 검사",
+    period: "2025.10 ~ 2026.01",
+    duration: "약 4개월",
+    description: "NIA(한국지능정보사회진흥원) 주관, TTA(한국정보통신기술협회) 담당 프로젝트. 8개 과제의 AI 학습 데이터에 대한 의미적 정확성 검사를 담당했습니다. IoU 기반 검사 기준을 직접 개발하고, Python 자동화 도구를 구축해 검사 일정 준수율 100%를 달성했습니다. 인건비 100만원 절감, 처리시간 90% 단축(22시간→1~2시간)의 성과를 거뒀습니다.",
+    image: "/images/alchera_logo.jpg",
+    teamSize: "검사 담당",
+    team: ["NIA (발주처)", "TTA (관리기관)", "수행사 다수"],
+    role: [
+      "검사 프로세스 설계 및 운영",
+      "IoU 기반 정량적 검사 기준 개발",
+      "Python 자동화 도구 개발",
+      "TTA·NIA·수행사 커뮤니케이션"
+    ],
+    skills: [
+      { name: "Python", color: "bg-blue-600" },
+      { name: "QA/QC", color: "bg-amber-600" },
+      { name: "Data Inspection", color: "bg-emerald-600" }
+    ],
+    link: "#",
+    category: "알체라",
+    subTasks: [
+      "신재생 에너지 발전 설비 결함 진단 멀티모달 데이터",
+      "분자 독성 추론 데이터",
+      "문서 이해 기반 시각 요소 생성 데이터",
+      "한국 전통 민화 제작 데이터",
+      "K-스톡 콘텐츠 데이터",
+      "이상 판별을 위한 금융거래 정보 및 사용자 패턴 합성 데이터",
+      "금융 분야 고객 상담 데이터",
+      "단계적 사고 기반 물류 로봇 파지 교시 데이터"
+    ]
+  },
+  {
+    title: "SKT K-Omnidoc",
+    titleKo: "SKT 문서이해향 Telco 멀티모달 DB 구축",
+    period: "2026.01.19 ~ 2026.06.05",
+    duration: "약 5개월",
+    description: "SKT AI 연구를 위한 문서이해 특화 멀티모달 데이터베이스 구축 프로젝트. 20,000장 문서에 대해 DLA → OCR → Table/Chart/Equation HTML → 최종 JSON 통합까지 7단계 파이프라인 전체를 설계·총괄했습니다. Upstage OCR/Document Parsing API, MathPix 등 외부 API를 연동하고 스크립트 15종 이상을 개발해 재현 가능한 파이프라인을 확립했습니다.",
+    image: "/images/alchera_logo.jpg",
+    teamSize: "PM·총괄",
+    team: ["프리랜서 작업자 55명", "사무실 근무자 10~20명"],
+    role: [
+      "전체 데이터 파이프라인 PM·총괄",
+      "Python 자동화 스크립트 15종+ 개발",
+      "23개 클래스 라벨링 기준 수립",
+      "작업자 관리 및 고객사 커뮤니케이션"
+    ],
+    skills: [
+      { name: "Python", color: "bg-blue-600" },
+      { name: "Project Management", color: "bg-indigo-600" },
+      { name: "Data Pipeline", color: "bg-purple-600" },
+      { name: "API Integration", color: "bg-teal-600" }
+    ],
+    link: "#",
+    category: "알체라"
+  },
+  {
+    title: "AI Tool Proposal",
+    titleKo: "사내 AI 업무 도입 제안서",
+    period: "2026년",
+    duration: "-",
+    description: "사내 업무 효율화를 위한 AI 도구 도입 제안서를 자발적으로 기획·제작했습니다. 현업 업무 프로세스를 분석해 AI 적용 가능 영역을 도출하고, 도구별 비교 분석·ROI 산출·단계별 도입 로드맵을 정리한 PPT 보고서를 작성했습니다.",
+    image: "/images/alchera_logo.jpg",
+    teamSize: "개인 기획",
+    team: ["개인 작업"],
+    role: [
+      "업무 프로세스 분석",
+      "AI 도구 비교 분석",
+      "도입 로드맵 설계",
+      "PPT 보고서 작성"
+    ],
+    skills: [
+      { name: "AI Planning", color: "bg-violet-600" },
+      { name: "Business Analysis", color: "bg-sky-600" }
+    ],
+    link: "#",
+    category: "알체라"
+  },
+  {
+    title: "FireScout AI Data",
+    titleKo: "화재 탐지 AI 학습 데이터 구축",
+    period: "2026.05.27 ~ 2026.07.15",
+    duration: "진행 중",
+    description: "알체라의 FireScout(CCTV 기반 화재·연기 자동 탐지 AI) 모델 재학습용 데이터를 구축하는 AI flywheel 프로젝트 총괄. Normal Negative·Hard Negative·Positive(화재 LV1~5) 영상 4,550편 구조를 설계하고, Python 자동화 스크립트(001~007번) 개발로 데이터 추출·라벨링·JSON 생성 파이프라인을 구축했습니다. 라벨링 클래스 재설계를 통해 시간당 작업량을 23장→100장으로 4.33배 향상시켰습니다.",
+    image: "/images/alchera_logo.jpg",
+    teamSize: "총괄 매니저",
+    team: ["라벨링 작업자 다수", "알체라 연구소"],
+    role: [
+      "데이터 수집·가공 파이프라인 총괄",
+      "라벨링 클래스 재설계",
+      "Python 자동화 스크립트 개발",
+      "현장 데이터 수집 운영 (3개 현장)"
+    ],
+    skills: [
+      { name: "Python", color: "bg-blue-600" },
+      { name: "Project Management", color: "bg-indigo-600" },
+      { name: "Data Pipeline", color: "bg-purple-600" }
+    ],
+    link: "#",
+    category: "알체라"
+  },
+  {
+    title: "Liveness AI Data",
+    titleKo: "얼굴 위조 판별 AI 학습 데이터 구축",
+    period: "2026.05.27 ~ 2026.07.15",
+    duration: "진행 중",
+    description: "알체라의 Liveness(얼굴 위조 판별 AI) 모델 학습 데이터를 구축하는 AI flywheel 프로젝트 총괄. LIVE(실제 얼굴)와 FAKE(Print·Replay·3D Attack) 데이터를 다국적 피험자를 대상으로 수집했습니다. 스튜디오 3종 환경(백색·주황색·저조도) 구성, 촬영 시나리오·메타데이터 체계 설계, 계약·보수 지급 프로세스까지 전 과정을 운영했습니다.",
+    image: "/images/alchera_logo.jpg",
+    teamSize: "총괄 매니저",
+    team: ["다국적 촬영 피험자 다수", "알체라 연구소"],
+    role: [
+      "데이터 취득 파이프라인 총괄",
+      "스튜디오 환경 구성 및 장비 조달",
+      "다국적 피험자 모집·관리",
+      "촬영 시나리오·메타데이터 설계"
+    ],
+    skills: [
+      { name: "Project Management", color: "bg-indigo-600" },
+      { name: "Data Collection", color: "bg-teal-600" },
+      { name: "Studio Operations", color: "bg-rose-600" }
+    ],
+    link: "#",
+    category: "알체라"
+  },
   {
     title: "LG Document Layout",
     titleKo: "AI 문서 레이아웃 데이터 라벨링",

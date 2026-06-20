@@ -48,6 +48,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
             {/* 제목 및 기본 정보 */}
             <div className="space-y-2 xs:space-y-2 sm:space-y-3">
               <div>
+                {project.category && (
+                  <span className="inline-block mb-1 px-2 py-0.5 text-[10px] font-semibold rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
+                    {project.category}
+                  </span>
+                )}
                 <h3 className="text-base xs:text-lg sm:text-lg font-bold text-gray-900 dark:text-white theme-transition-icon">
                   {project.title}
                 </h3>
@@ -142,6 +147,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
               {/* 콘텐츠 */}
               <div className="p-4 flex flex-col h-[calc(100%-12rem)] min-h-[16rem] space-y-4 overflow-y-auto lg:p-3 lg:h-[calc(100%-10rem)] xl:h-[calc(100%-12rem)] xl:p-4 lg:space-y-3 xl:space-y-4">
                 <div>
+                  {project.category && (
+                    <span className="inline-block mb-1 px-2 py-0.5 text-[10px] font-semibold rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
+                      {project.category}
+                    </span>
+                  )}
                   <h3 className="text-lg lg:text-base xl:text-lg font-bold text-gray-900 dark:text-white theme-transition-icon">
                     {project.title}
                   </h3>
@@ -180,7 +190,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
             onClick={handleFlip}
           >
             <div className="glassmorphism h-full rounded-xl p-4 flex flex-col justify-between shadow-lg">
-              <div className="space-y-3 overflow-y-auto">
+              <div className="space-y-3 overflow-y-auto max-h-[320px] lg:max-h-[280px] xl:max-h-[320px] pr-1 scrollbar-thin">
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white">
                   프로젝트 상세
                 </h3>
@@ -190,6 +200,23 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
                 <p className="text-sm lg:text-xs xl:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
                   {project.description}
                 </p>
+                {project.subTasks && project.subTasks.length > 0 && (
+                  <div>
+                    <h4 className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-1.5">
+                      담당 과제 ({project.subTasks.length}개)
+                    </h4>
+                    <ul className="space-y-1">
+                      {project.subTasks.map((task, i) => (
+                        <li key={i} className="text-xs text-gray-600 dark:text-gray-300 flex items-start gap-1.5">
+                          <span className="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center text-[10px] font-bold">
+                            {i + 1}
+                          </span>
+                          {task}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
 
               <motion.a
