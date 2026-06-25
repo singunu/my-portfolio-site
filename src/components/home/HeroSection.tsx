@@ -1,156 +1,116 @@
-'use client'
+'use client';
 
 import { motion } from 'framer-motion';
-import { 
-  FaGithub, 
-  FaLinkedin,
-} from 'react-icons/fa';
+import { Link } from 'react-scroll';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { SiNotion } from 'react-icons/si';
+import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import ScrambleText from '@/components/ui/ScrambleText';
 
 export default function HeroSection() {
   return (
-    <div className="min-h-screen flex items-center justify-center px-2 sm:px-4 md:px-6 lg:px-8 relative overflow-hidden">
+    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden px-4 py-24 sm:px-6 lg:px-8">
       <motion.div
-        className="w-full max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl mx-auto relative z-10 text-center"
-        initial={{ opacity: 0, y: 20 }}
+        className="relative z-10 mx-auto w-full max-w-3xl text-center"
+        initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.6 }}
       >
-        <motion.h1 
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-white 
-                     mb-2 sm:mb-3 md:mb-4 lg:mb-5 tracking-tighter leading-tight"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          style={{
-            fontFamily: 'GumiIndustryTTF',
-            WebkitBackfaceVisibility: "hidden",
-            WebkitTransform: "translate3d(0, 0, 0)",
-            willChange: "transform"
-          }}
-        >
-          안녕하세요, 신건우입니다.
-        </motion.h1>
-        
-        <motion.h2 
-          className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 
-                     bg-clip-text text-transparent dark:from-indigo-300 dark:via-purple-100 
-                     mb-3 sm:mb-4 md:mb-5 lg:mb-6"
-          style={{ 
-          fontFamily: 'Bai Jamjuree',
-          WebkitBackfaceVisibility: "hidden",
-          WebkitTransform: "translate3d(0, 0, 0)",
-          willChange: "transform",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent"
-          }}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          Data Analyst & Front-end Developer
-        </motion.h2>
-        
         <motion.p
-          className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 
-                    max-w-xs sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto 
-                    leading-relaxed sm:leading-loose px-2 sm:px-3 md:px-4 
-                    tracking-normal lg:text-lg
-                    mb-4 sm:mb-6 md:mb-8"
-          initial={{ opacity: 0, y: 30 }}
+          className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--fg-muted)] sm:text-sm"
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          style={{ 
-            WebkitBackfaceVisibility: "hidden",
-            WebkitTransform: "translate3d(0, 0, 0)",
-            willChange: "transform"
-          }}
+          transition={{ duration: 0.5, delay: 0.1 }}
         >
-          데이터를 이해하기 쉽게 전달하고,
-          <br className="hidden sm:block" />
-          더 나은 사용자 경험을 만들어가고 싶습니다.
+          <ScrambleText text="Portfolio" />
         </motion.p>
-        
+
+        <motion.h1
+          className="mb-3 text-3xl font-extrabold leading-tight tracking-tight text-[var(--fg)] sm:text-4xl md:text-5xl lg:text-6xl"
+          style={{ fontFamily: 'GumiIndustryTTF' }}
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+        >
+          <ScrambleText text="안녕하세요, 신건우입니다." />
+        </motion.h1>
+
+        <motion.h2
+          className="text-gradient mb-5 text-xl font-bold sm:text-2xl md:text-3xl lg:text-4xl"
+          style={{
+            fontFamily: 'Bai Jamjuree',
+            // 보라색을 빼고 하늘·데이터 톤의 파랑→시안 그라데이션으로 통일
+            backgroundImage: 'linear-gradient(100deg, var(--accent) 0%, var(--accent-2) 100%)',
+          }}
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <ScrambleText text="AI Data Project Manager" />
+        </motion.h2>
+
+        <motion.p
+          className="mx-auto mb-8 max-w-xl text-sm leading-relaxed text-[var(--fg-muted)] sm:text-base md:text-lg"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <ScrambleText text="대규모 AI 학습·테스트 데이터를 기획부터 납품까지 운영합니다." className="block" />
+          <ScrambleText text="데이터 파이프라인 설계와 인력 운영, 품질 검증을 직접 다룹니다." className="mt-1 block" />
+        </motion.p>
+
         <motion.div
-          className="flex justify-center space-x-2 sm:space-x-3 md:space-x-4 lg:space-x-5"
+          className="flex flex-wrap items-center justify-center gap-3"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <motion.a 
+          <motion.a
             href="https://verbose-hoodie-b9b.notion.site/1509a4450304809fab3afaac417ab2ff?pvs=4"
             target="_blank"
-            className="px-3 sm:px-4 lg:px-5 py-2 sm:py-3 text-sm lg:text-sm sm:text-base
-                      glassmorphism text-gray-800 dark:text-white rounded-full 
-                      hover:bg-blue-500/10 dark:hover:bg-blue-400/10 
-                      transition-colors flex items-center space-x-2 group"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            rel="noopener noreferrer"
+            className="glassmorphism card-hover flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-[var(--fg)]"
+            whileTap={{ scale: 0.96 }}
           >
-            <SiNotion className="w-4 h-4 sm:w-5 sm:h-5 theme-transition-icon" />
-            <span className="hidden sm:inline theme-transition-icon">이력서 보기</span>
+            <SiNotion className="h-4 w-4 sm:h-5 sm:w-5" />
+            <span>이력서 보기</span>
           </motion.a>
-  
-          <motion.a 
+
+          <motion.a
             href="https://github.com/singunu"
             target="_blank"
-            className="p-2 sm:p-3 md:p-4 lg:p-3 glassmorphism 
-                      text-gray-700 dark:text-gray-300 
-                      rounded-full hover:bg-blue-500/10 
-                      dark:hover:bg-blue-400/10 
-                      transition-colors flex items-center"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            className="glassmorphism card-hover flex items-center rounded-full p-3 text-[var(--fg)]"
+            whileTap={{ scale: 0.96 }}
           >
-            <FaGithub className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-5 lg:h-5 theme-transition-icon" />
+            <FaGithub className="h-5 w-5" />
           </motion.a>
-  
-          <motion.a 
+
+          <motion.a
             href="https://www.linkedin.com/in/singunu/"
             target="_blank"
-            className="p-2 sm:p-3 md:p-4 lg:p-3 glassmorphism 
-                      text-blue-600 dark:text-blue-400 
-                      rounded-full hover:bg-blue-500/10 
-                      dark:hover:bg-blue-400/10 
-                      transition-colors flex items-center"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="glassmorphism card-hover flex items-center rounded-full p-3"
+            style={{ color: 'var(--accent)' }}
+            whileTap={{ scale: 0.96 }}
           >
-            <FaLinkedin className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-5 lg:h-5 theme-transition-icon" />
+            <FaLinkedin className="h-5 w-5" />
           </motion.a>
         </motion.div>
       </motion.div>
-     
-      <div className="absolute inset-0 -z-0 overflow-hidden pointer-events-none">
-        <motion.div 
-          className="absolute -top-4 left-1/4 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 
-                     bg-blue-400/30 rounded-full mix-blend-multiply filter blur-xl"
-          animate={{ 
-            scale: [1, 1.2, 1],
-            x: [0, 50, 0],
-            y: [0, 30, 0]
-          }}
-          transition={{ 
-            duration: 8,
-            repeat: Infinity,
-            repeatType: "reverse"
-          }}
-        />
-        <motion.div 
-          className="absolute top-1/3 right-1/4 w-40 h-40 sm:w-56 sm:h-56 md:w-80 md:h-80 lg:w-96 lg:h-96 
-                     bg-cyan-400/30 rounded-full mix-blend-multiply filter blur-xl"
-          animate={{ 
-            scale: [1.2, 1, 1.2],
-            x: [0, -30, 0],
-            y: [0, 50, 0]
-          }}
-          transition={{ 
-            duration: 10,
-            repeat: Infinity,
-            repeatType: "reverse"
-          }}
-        />
-      </div>
-    </div>
+
+      {/* 스크롤 유도 */}
+      <Link to="about" smooth duration={500} offset={-10} className="absolute bottom-24 left-1/2 hidden -translate-x-1/2 cursor-pointer sm:block">
+        <motion.div
+          className="text-[var(--fg-muted)]"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <ChevronDownIcon className="h-6 w-6" />
+        </motion.div>
+      </Link>
+    </section>
   );
 }

@@ -1,246 +1,90 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { FaUsers, FaClock, FaTools, FaExternalLinkAlt, FaHandPointer } from 'react-icons/fa';
+import { FaUsers, FaClock, FaArrowRight } from 'react-icons/fa';
 import { Project } from './ProjectsData';
 
 interface ProjectCardProps {
   project: Project;
   index: number;
+  onOpen: () => void;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  const handleFlip = () => {
-    if (!isAnimating) {
-      setIsFlipped(!isFlipped);
-    }
-  };
-
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onOpen }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1 }}
-      className="perspective-1000 min-h-[400px] sm:min-h-[460px] md:min-h-[500px] lg:min-h-[440px] xl:min-h-[500px]"
+    <motion.button
+      type="button"
+      onClick={onOpen}
+      aria-label={`${project.title} 상세 보기`}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.45, delay: Math.min(index * 0.06, 0.4) }}
+      className="glassmorphism card-hover group flex h-full flex-col overflow-hidden rounded-2xl text-left"
     >
-      {/* 모바일 디자인 */}
-      <div className="block lg:hidden">
-        <div className="glassmorphism rounded-xl overflow-hidden shadow-lg flex flex-col">
-          {/* 이미지 */}
-          <div className="relative h-36 sm:h-44 md:h-48 lg:h-40 xl:h-48">
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              sizes="100vw"
-              className="object-cover"
-              priority
-            />
-          </div>
+      {/* 이미지 */}
+      <div className="relative h-40 w-full flex-shrink-0 overflow-hidden sm:h-44">
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          sizes="(min-width: 1024px) 22rem, (min-width: 640px) 50vw, 100vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+      </div>
 
-          {/* 콘텐츠 */}
-          <div className="p-3 xs:p-3 sm:p-4 flex flex-col">
-            {/* 제목 및 기본 정보 */}
-            <div className="space-y-2 xs:space-y-2 sm:space-y-3">
-              <div>
-                {project.category && (
-                  <span className="inline-block mb-1 px-2 py-0.5 text-[10px] font-semibold rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
-                    {project.category}
-                  </span>
-                )}
-                <h3 className="text-base xs:text-lg sm:text-lg font-bold text-gray-900 dark:text-white theme-transition-icon">
-                  {project.title}
-                </h3>
-                <p className="text-sm xs:text-base text-gray-600 dark:text-gray-300 line-clamp-2 theme-transition-icon">
-                  {project.titleKo}
-                </p>
-              </div>
+      {/* 콘텐츠 */}
+      <div className="flex flex-1 flex-col p-4">
+        {project.category && (
+          <span
+            className="mb-1.5 inline-block w-fit rounded-full px-2 py-0.5 text-[10px] font-semibold"
+            style={{
+              backgroundColor: 'color-mix(in srgb, var(--accent) 14%, transparent)',
+              color: 'var(--accent)',
+            }}
+          >
+            {project.category}
+          </span>
+        )}
 
-              <div className="flex flex-wrap items-center gap-1.5 xs:gap-2 text-sm text-gray-600 dark:text-gray-300">
-                <div className="flex items-center gap-1">
-                  <FaUsers className="w-2.5 xs:w-3 h-2.5 xs:h-3 theme-transition-icon" />
-                  <span>{project.teamSize}</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <FaClock className="w-2.5 xs:w-3 h-2.5 xs:h-3 theme-transition-icon" />
-                  <span>{project.duration}</span>
-                </div>
-              </div>
+        <h3 className="text-base font-bold text-[var(--fg)] sm:text-lg">{project.title}</h3>
+        <p className="line-clamp-1 text-sm text-[var(--fg-muted)]">{project.titleKo}</p>
 
-              <div className="mb-1 xs:mb-2">
-                <h4 className="text-base font-semibold text-gray-900 dark:text-white mb-1.5 flex items-center gap-1.5 sm:gap-2">
-                  <FaTools className="w-3 h-3 sm:w-4 sm:h-4 lg:w-3.5 lg:h-3.5 xl:w-4 xl:h-4 theme-transition-icon" />
-                  담당 역할
-                </h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300 theme-transition-icon">
-                  {project.role.join(', ')}
-                </p>
-              </div>
-            </div>
-            <motion.a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-3 mb-0 mx-2 sm:mx-0 py-1 xs:py-1.5 sm:py-2 
-                flex items-center justify-center gap-1 xs:gap-1.5 sm:gap-2
-                text-xs xs:text-sm text-blue-600 dark:text-blue-300 
-                border border-blue-500/30 dark:border-blue-400/30
-                rounded-lg
-                bg-blue-500/5 dark:bg-blue-400/5
-                hover:bg-blue-500/10 dark:hover:bg-blue-400/10
-                transition-all duration-300 
-                group"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              자세히 보기
-              <FaExternalLinkAlt className="w-2.5 xs:w-3 h-2.5 xs:h-3 transition-transform group-hover:translate-x-1 theme-transition-icon" />
-            </motion.a>
-          </div>
+        <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-[var(--fg-muted)]">
+          <span className="flex items-center gap-1">
+            <FaUsers className="h-3 w-3" />
+            {project.teamSize}
+          </span>
+          <span className="flex items-center gap-1">
+            <FaClock className="h-3 w-3" />
+            {project.duration}
+          </span>
         </div>
-      </div>
 
-      {/* 태블릿/데스크톱 디자인 */}
-      <div className="hidden lg:block perspective-1000 h-[460px] md:h-[500px] lg:h-[440px] xl:h-[500px]">
-        <motion.div
-          className="relative w-full h-full preserve-3d group"
-          animate={{ rotateY: isFlipped ? 180 : 0 }}
-          transition={{
-            duration: 0.4,
-            type: 'tween',
-            ease: 'easeInOut'
-          }}
-          onAnimationStart={() => setIsAnimating(true)}
-          onAnimationComplete={() => setIsAnimating(false)}
+        {/* 스킬 미리보기 */}
+        <div className="mt-3 flex flex-wrap gap-1.5">
+          {project.skills.slice(0, 3).map((s) => (
+            <span
+              key={s.name}
+              className={`${s.color} rounded-full px-2 py-0.5 text-[10px] font-medium text-white`}
+            >
+              {s.name}
+            </span>
+          ))}
+        </div>
+
+        <span
+          className="mt-4 flex items-center gap-1.5 text-xs font-medium transition-colors"
+          style={{ color: 'var(--accent)' }}
         >
-          {/* Front of card */}
-          <div
-            className="absolute w-full h-full backface-hidden cursor-pointer group"
-            onClick={handleFlip}
-          >
-            <div className="glassmorphism h-full rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow relative">
-              {/* 호버 시 클릭 가능 표시 */}
-              <div className="absolute top-2 right-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="flex items-center gap-1 bg-black/50 text-white px-2 py-1 rounded-full text-xs">
-                  <FaHandPointer className="w-3 h-3" />
-                  Click to Flip
-                </div>
-              </div>
-
-              {/* 이미지 */}
-              <div className="relative h-36 sm:h-44 md:h-48 lg:h-32 xl:h-48">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
-                  className="object-cover"
-                  priority
-                />
-              </div>
-
-              {/* 콘텐츠 */}
-              <div className="p-4 flex flex-col h-[calc(100%-12rem)] min-h-[16rem] space-y-4 overflow-y-auto lg:p-3 lg:h-[calc(100%-10rem)] xl:h-[calc(100%-12rem)] xl:p-4 lg:space-y-3 xl:space-y-4">
-                <div>
-                  {project.category && (
-                    <span className="inline-block mb-1 px-2 py-0.5 text-[10px] font-semibold rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
-                      {project.category}
-                    </span>
-                  )}
-                  <h3 className="text-lg lg:text-base xl:text-lg font-bold text-gray-900 dark:text-white theme-transition-icon">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm lg:text-xs xl:text-sm text-gray-600 dark:text-gray-300 line-clamp-2 theme-transition-icon">
-                    {project.titleKo}
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap items-center gap-3 lg:gap-2 xl:gap-3 text-sm lg:text-xs xl:text-sm text-gray-600 dark:text-gray-300">
-                  <div className="flex items-center gap-1">
-                    <FaUsers className="w-4 h-4 lg:w-3.5 lg:h-3.5 xl:w-4 xl:h-4 theme-transition-icon" />
-                    <span>{project.teamSize}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <FaClock className="w-4 h-4 lg:w-3.5 lg:h-3.5 xl:w-4 xl:h-4 theme-transition-icon" />
-                    <span>{project.duration}</span>
-                  </div>
-                </div>
-
-                <div className="mt-auto pt-2">
-                  <h4 className="text-sm sm:text-base lg:text-sm xl:text-base font-semibold text-gray-900 dark:text-white mb-1 flex items-center gap-1.5 sm:gap-2">
-                    <FaTools className="w-3 h-3 sm:w-4 sm:h-4 theme-transition-icon" />
-                    담당 역할
-                  </h4>
-                  <p className="text-xs sm:text-sm lg:text-xs xl:text-sm text-gray-600 dark:text-gray-300 theme-transition-icon">
-                    {project.role.join(', ')}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Back of card */}
-          <div
-            className="absolute w-full h-full backface-hidden rotate-y-180 cursor-pointer group"
-            onClick={handleFlip}
-          >
-            <div className="glassmorphism h-full rounded-xl p-4 flex flex-col justify-between shadow-lg">
-              <div className="space-y-3 overflow-y-auto max-h-[320px] lg:max-h-[280px] xl:max-h-[320px] pr-1 scrollbar-thin">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white">
-                  프로젝트 상세
-                </h3>
-                <p className="text-xs text-gray-500 dark:text-gray-400">
-                  {project.period}
-                </p>
-                <p className="text-sm lg:text-xs xl:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {project.description}
-                </p>
-                {project.subTasks && project.subTasks.length > 0 && (
-                  <div>
-                    <h4 className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-1.5">
-                      담당 과제 ({project.subTasks.length}개)
-                    </h4>
-                    <ul className="space-y-1">
-                      {project.subTasks.map((task, i) => (
-                        <li key={i} className="text-xs text-gray-600 dark:text-gray-300 flex items-start gap-1.5">
-                          <span className="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center text-[10px] font-bold">
-                            {i + 1}
-                          </span>
-                          {task}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-
-              <motion.a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-2.5 flex items-center justify-center gap-2 lg:gap-1.5 xl:gap-2
-                         text-blue-600 dark:text-blue-300 text-sm lg:text-xs xl:text-sm
-                         border border-blue-500/30 dark:border-blue-400/30
-                         rounded-full
-                         bg-blue-500/5 dark:bg-blue-400/5
-                         hover:bg-blue-500/10 dark:hover:bg-blue-400/10
-                         transition-all"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                자세히 보기
-                <FaExternalLinkAlt className="w-4 h-4 lg:w-3.5 lg:h-3.5 xl:w-4 xl:h-4 transition-transform hover:translate-x-1" />
-              </motion.a>
-            </div>
-          </div>
-        </motion.div>
+          자세히 보기
+          <FaArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
+        </span>
       </div>
-    </motion.div>
+    </motion.button>
   );
 };
 

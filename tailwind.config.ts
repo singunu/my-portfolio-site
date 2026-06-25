@@ -8,8 +8,32 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient': 'linear-gradient(135deg, var(--gradient-1) 0%, var(--gradient-2) 30%, var(--gradient-3) 70%, var(--gradient-4) 100%)',
+      colors: {
+        accent: {
+          DEFAULT: 'var(--accent)',
+          2: 'var(--accent-2)',
+          3: 'var(--accent-3)',
+        },
+      },
+      fontFamily: {
+        display: ['Bai Jamjuree', 'Pretendard', 'sans-serif'],
+      },
+      keyframes: {
+        floaty: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-14px)' },
+        },
+        'fade-up': {
+          '0%': { opacity: '0', transform: 'translateY(24px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        floaty: 'floaty 6s ease-in-out infinite',
+        'fade-up': 'fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both',
+      },
+      boxShadow: {
+        glow: '0 18px 50px var(--glow)',
       },
     },
   },

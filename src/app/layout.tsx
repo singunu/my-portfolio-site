@@ -1,21 +1,16 @@
+import type { Metadata, Viewport } from 'next'
 import Providers from '@/components/providers/ThemeProvider'
-// import { Inter } from 'next/font/google'
 import './globals.css'
 
-// const inter = Inter({ subsets: ['latin'] })
-
-export const metadata = {
+export const metadata: Metadata = {
   title: "singunu's portfolio",
   description: '신건우의 포트폴리오 웹사이트입니다',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    viewportFit: 'cover',
-    minimumScale: 1,
-    maximumScale: 1,
-    userScalable: false,
-    'viewport-fit': 'cover'
-  }
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
 }
 
 export default function RootLayout({
