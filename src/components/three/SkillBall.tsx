@@ -197,16 +197,6 @@ export default function SkillBall({ skills }: { skills: BallSkill[] }) {
   const tier = useTier();
   const cfg = TIER_CFG[tier];
 
-  // 드래그 회전은 랩탑+(포인터 기기)에서만 → 터치 기기의 스크롤 충돌 방지
-  const [allowControls, setAllowControls] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 1024px)');
-    const update = () => setAllowControls(mq.matches);
-    update();
-    mq.addEventListener('change', update);
-    return () => mq.removeEventListener('change', update);
-  }, []);
-
   const isDark = theme === 'dark';
   // 글자에 부드러운 헤일로만 주는 옅은 스트로크
   const stroke = isDark ? 'rgba(6,12,32,0.5)' : 'rgba(255,255,255,0.6)';
@@ -219,7 +209,8 @@ export default function SkillBall({ skills }: { skills: BallSkill[] }) {
       style={{ width: '100%', height: '100%' }}
     >
       <Cloud skills={skills} stroke={stroke} isDark={isDark} radius={cfg.radius} textSizes={cfg.text} />
-      {allowControls && <OrbitControls enableZoom={false} enablePan={false} rotateSpeed={0.5} />}
+      {/* 데스크톱·모바일 모두 드래그 회전 허용. 핀치/팬은 꺼서 한 손가락 회전만 사용 */}
+      <OrbitControls enableZoom={false} enablePan={false} rotateSpeed={0.6} />
     </Canvas>
   );
 }

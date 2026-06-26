@@ -169,7 +169,7 @@ const FIELD_VERT = /* glsl */ `
   uniform float uRippleStart[NR];
   uniform float uRippleStrength[NR];
   attribute float aGlyph, aSize, aPhase, aBright, aCloud, aAlive;
-  varying float vGlyph, vTw, vBright, vPush, vCloud, vAlive;
+  varying float vGlyph, vTw, vBright, vCloud, vAlive;
   void main() {
     vGlyph = aGlyph; vBright = aBright; vCloud = aCloud; vAlive = aAlive;
     vTw = 0.7 + 0.3 * sin(uTime * (0.8 + uEnergy) + aPhase);
@@ -182,7 +182,6 @@ const FIELD_VERT = /* glsl */ `
       float env = age < 0.12 ? age / 0.12 : 1.0 - (age - 0.12) / 1.48;
       p += normalize(d + 1e-4) * w * clamp(env, 0.0, 1.0) * uRippleStrength[i];
     }
-    vPush = length(p - position);
     vec4 mv = modelViewMatrix * vec4(p, 1.0);
     gl_PointSize = aSize * uSize * (1.0 / -mv.z);
     gl_Position = projectionMatrix * mv;
@@ -194,15 +193,14 @@ const FIELD_FRAG = /* glsl */ `
   uniform vec3 uColor, uStorm;
   uniform float uOpacity;
   uniform float uCharge[3];
-  varying float vGlyph, vTw, vBright, vPush, vCloud, vAlive;
+  varying float vGlyph, vTw, vBright, vCloud, vAlive;
   void main() {
     vec2 uv = vec2(gl_PointCoord.x * 0.5 + vGlyph * 0.5, 1.0 - gl_PointCoord.y);
     float a = texture2D(uAtlas, uv).a;
     if (a < 0.08) discard;
     float charge = vCloud < 0.5 ? uCharge[0] : (vCloud < 1.5 ? uCharge[1] : uCharge[2]);
     vec3 col = mix(uColor, uStorm, charge);
-    float push = 1.0 - clamp(vPush * 0.34, 0.0, 0.85);
-    gl_FragColor = vec4(col, a * uOpacity * vTw * vBright * push * vAlive);
+    gl_FragColor = vec4(col, a * uOpacity * vTw * vBright * vAlive);
   }
 `;
 
@@ -308,14 +306,21 @@ function BinaryField({
         ch[ci] = 0;
         const wc = pts.localToWorld(new THREE.Vector3(MACRO[ci][0], MACRO[ci][1], MACRO[ci][2]));
         const rain = Math.random() < 0.9; // 비 90% / 번개 10%
-        const c = rain ? '#bfe7ff' : '#fff3a0';
-        spawnRef.current({
-          position: [wc.x, wc.y, wc.z],
-          colorA: c, colorB: c,
-          pattern: rain ? 'rain' : 'lightning',
-          life: rain ? 1.3 : 0.55,
-          spread: rain ? 3.6 + Math.random() * 1.6 : 1.0,
-        });
+        spawnRef.current(rain
+          ? {
+              position: [wc.x, wc.y, wc.z],
+              colorA: '#bfe7ff', colorB: '#bfe7ff',
+              pattern: 'rain',
+              life: 2.2,                          // 더 길게
+              spread: 3.8 + Math.random() * 1.8,  // 낙하 길이 소폭 ↑
+            }
+          : {
+              position: [wc.x, wc.y, wc.z],
+              colorA: '#ffffff', colorB: '#cfe0ff', // 전기 백색-청색으로 더 선명
+              pattern: 'lightning',
+              life: 0.7,
+              spread: 1.0,
+            });
       }
     } else {
       const t = timeRef.current;
@@ -477,10 +482,10 @@ function makeBurst(pattern: Pattern, N: number): { dir: Float32Array; start: Flo
       const a2 = (Math.floor(Math.random() * 5) / 5) * Math.PI * 2, r = 0.4 + Math.random() * 0.8;
       x = Math.cos(a2) * r; y = Math.sin(a2) * r; z = (Math.random() - 0.5) * 0.2;
     } else if (pattern === 'rain') {
-      // 위에서 평행하게 수직 낙하 (한 점에서 퍼지지 않음)
-      start[i * 3] = (Math.random() - 0.5) * 2.6;
+      // 위에서 평행하게 수직 낙하 (한 점에서 퍼지지 않음). 더 넓은 범위로 분산
+      start[i * 3] = (Math.random() - 0.5) * 4.8;
       start[i * 3 + 1] = 0.8 + Math.random() * 0.9;
-      start[i * 3 + 2] = (Math.random() - 0.5) * 1.0;
+      start[i * 3 + 2] = (Math.random() - 0.5) * 1.6;
       x = (Math.random() - 0.5) * 0.12; y = -(2.0 + Math.random() * 1.6); z = 0;
     }
     dir[i * 3] = x; dir[i * 3 + 1] = y; dir[i * 3 + 2] = z;
@@ -519,7 +524,7 @@ const BURST_FRAG = /* glsl */ `
     float age01 = clamp((uTime - uStart) / uLife, 0.0, 1.0);
     // 중심·초반은 A(뜨거움), 멀고 늦을수록 B(식음)
     vec3 col = mix(uColorA, uColorB, clamp(vDist * 0.6 + age01 * 0.6, 0.0, 1.0));
-    float flick = 0.6 + 0.4 * sin(uTime * 55.0 + vSeed * 20.0);
+    float flick = 0.82 + 0.18 * sin(uTime * 55.0 + vSeed * 20.0);
     float a = al * (1.0 - age01) * mix(1.0, flick, uFlicker);
     gl_FragColor = vec4(col, a);
   }
@@ -528,7 +533,7 @@ const BURST_FRAG = /* glsl */ `
 function DigitBurst({
   id, position, colorA, colorB, pattern, life, spread, atlas, onDone,
 }: BurstOpts & { id: number; atlas: THREE.CanvasTexture; onDone: (id: number) => void }) {
-  const N = pattern === 'rain' || pattern === 'lightning' ? 30 : 22;
+  const N = pattern === 'rain' ? 50 : pattern === 'lightning' ? 40 : 22;
   const start = useRef<number | null>(null);
 
   const geometry = useMemo(() => {
@@ -635,7 +640,7 @@ function SideShapes({
   const active = useRef(false);
   const spawnTimer = useRef(0);
   const idRef = useRef(0);
-  const MAX = isMobile ? 2 : 4;
+  const MAX = isMobile ? 1 : 3;
   const color = isDark ? '#22d3ee' : '#2563eb';
 
   const camRef = useRef(camera); camRef.current = camera;

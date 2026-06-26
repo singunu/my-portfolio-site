@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import {
@@ -20,6 +21,9 @@ interface ProjectModalProps {
 
 export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   const closeRef = useRef<HTMLButtonElement>(null);
+  // 포털은 클라이언트 마운트 후에만 (SSR 안전장치)
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   // ESC 닫기 + 배경 스크롤 락
   useEffect(() => {
@@ -37,7 +41,9 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
   const hasExternalLink = project.link && project.link !== '#';
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <motion.div
       className="fixed inset-0 z-[100] flex items-end justify-center sm:items-center"
       initial={{ opacity: 0 }}
@@ -57,7 +63,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
       {/* Panel */}
       <motion.div
-        className="glassmorphism relative flex max-h-[92vh] w-full flex-col overflow-hidden rounded-t-3xl sm:max-w-2xl sm:rounded-3xl"
+        className="glassmorphism relative flex max-h-[92vh] w-full flex-col overflow-hidden rounded-t-3xl pb-[env(safe-area-inset-bottom)] sm:max-w-2xl sm:rounded-3xl sm:pb-0"
         initial={{ y: 40, opacity: 0, scale: 0.98 }}
         animate={{ y: 0, opacity: 1, scale: 1 }}
         exit={{ y: 40, opacity: 0, scale: 0.98 }}
@@ -203,6 +209,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           </div>
         )}
       </motion.div>
-    </motion.div>
+    </motion.div>,
+    document.body,
   );
 }
