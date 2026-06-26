@@ -123,10 +123,10 @@ export const projects: Project[] = [
     title: "LG Document Layout",
     titleKo: "AI 문서 레이아웃 데이터 라벨링",
     period: "2025.05.26 ~ 2025.10.13",
-    duration: "141일",
+    duration: "약 5개월",
     description: "LG AI Research의 문서 레이아웃 분석 모델 학습을 위한 대규모 데이터 라벨링 프로젝트입니다. 9명의 오퍼레이터와 100명의 프리랜서를 관리하며 13만 건 문서, 148만 개 객체에 대한 품질 관리를 수행했습니다. 커뮤니케이션 전략 혁신으로 추가 비용 없이 197.5% 생산성 향상을 달성하고, 리워드 프로그램으로 ROI 4.2배를 기록했습니다.",
     image: "/images/lgresearch.jpg",
-    teamSize: "Supervisor",
+    teamSize: "PM",
     team: ["오퍼레이터 9명", "프리랜서 100명"],
     role: [
       "인력 채용 및 교육",

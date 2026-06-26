@@ -137,6 +137,9 @@ body {
   }
   .section-anchor { scroll-margin-top: 80px; }
   .no-scroll { overflow: hidden !important; }
+  /* 모달이 열려 있는 동안 하단 내브바를 완전히 숨김 (Safari의 -webkit-backdrop-filter
+     합성 순서 버그로 z-index만으로는 모달 위에 내브바가 그려지는 문제 회피) */
+  body.modal-open .site-navbar { display: none; }
   .perspective-1000 { perspective: 1000px; }
   .preserve-3d { transform-style: preserve-3d; }
   .backface-hidden { backface-visibility: hidden; }

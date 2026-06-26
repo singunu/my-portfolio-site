@@ -31,11 +31,11 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
       if (e.key === 'Escape') onClose();
     };
     document.addEventListener('keydown', onKey);
-    document.body.classList.add('no-scroll');
+    document.body.classList.add('no-scroll', 'modal-open');
     closeRef.current?.focus();
     return () => {
       document.removeEventListener('keydown', onKey);
-      document.body.classList.remove('no-scroll');
+      document.body.classList.remove('no-scroll', 'modal-open');
     };
   }, [onClose]);
 
@@ -45,7 +45,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
   return createPortal(
     <motion.div
-      className="fixed inset-0 z-[100] flex items-end justify-center sm:items-center"
+      className="fixed inset-0 z-[100] flex items-end justify-center p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:items-center sm:p-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -63,7 +63,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
       {/* Panel */}
       <motion.div
-        className="glassmorphism relative flex max-h-[92vh] w-full flex-col overflow-hidden rounded-t-3xl pb-[env(safe-area-inset-bottom)] sm:max-w-2xl sm:rounded-3xl sm:pb-0"
+        className="glassmorphism relative flex max-h-[90dvh] w-full flex-col overflow-hidden rounded-3xl sm:max-w-2xl"
         initial={{ y: 40, opacity: 0, scale: 0.98 }}
         animate={{ y: 0, opacity: 1, scale: 1 }}
         exit={{ y: 40, opacity: 0, scale: 0.98 }}

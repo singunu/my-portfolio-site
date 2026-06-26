@@ -38,7 +38,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div className="fixed bottom-0 left-0 z-50 flex w-full justify-center px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-2">
+    <div className="site-navbar fixed bottom-0 left-0 z-50 flex w-full justify-center px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-2">
       <motion.nav
         initial={{ y: 60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}

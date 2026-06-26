@@ -76,8 +76,10 @@ function fitScaleFor(radius: number, width: number, height: number): number {
   const aspect = width / Math.max(1, height);
   const tan = Math.tan((FOV * Math.PI) / 180 / 2);
   const halfExtent = CAM_Z * tan * Math.min(aspect, 1); // 카메라~클라우드(원점) 가시 반높이/반너비 중 작은 쪽
-  // 글자 overhang 포함 반경(radius*1.5)이 가시 영역의 82%를 차지하도록 스케일
-  return (0.82 * halfExtent) / (radius * 1.5);
+  // 글자 overhang 포함 반경(radius*1.5)이 가시 영역을 채우는 비율.
+  // 가로로 넓은 캔버스(데스크톱)일수록 더 크게 채워 구가 작아 보이지 않게 한다.
+  const fill = THREE.MathUtils.clamp(0.82 + Math.max(0, aspect - 1) * 0.2, 0.82, 0.98);
+  return (fill * halfExtent) / (radius * 1.5);
 }
 
 function Cloud({
